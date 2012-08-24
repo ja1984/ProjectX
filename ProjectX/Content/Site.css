@@ -1,61 +1,114 @@
-﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+html {
+    overflow-y: scroll;
+    height: 100%;
 }
 
-header, footer, nav, section {
-    display: block;
+body
+{
+    background-color: #eee;
+    height: 100%;
 }
 
-
-/* Styles for basic forms
------------------------------------------------------------*/
-fieldset {
+article.container
+{
+    background: #fff;
     border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+    margin-bottom: 20px;
 }
 
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
+h1, h2, h3, h4, h5, h5
+{
+    color: #5a5a5a;
 }
 
-textarea {
-    min-height: 75px;
+div.navbar-inner
+{
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
 }
 
-.editor-label {
-    margin: 1em 0 0 0;
+nav.header
+{
+    background: url("/Content/Images/top_bg.png") repeat-x;
+    box-shadow: 0 2px 5px #AAA;
+    background-color: #B51818;
+    border-bottom: 1px solid #800909;
+    margin-bottom: 20px;
+    padding: 15px 0;
 }
 
-.editor-field {
-    margin: 0.5em 0 0 0;
+div.octocat
+{
+    background: url("/Content/images/octocat.png");
+    background-size: 64px 64px;
+    width:64px;
+    height:64px;
+}
+
+nav.header .navbar
+{
+    margin: 0;
 }
 
 
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
-    color: #f00;
+div.github ul li
+{
+    font-size: 11px;
+    text-overflow: ellipsis;
 }
 
-.field-validation-valid {
-    display: none;
+nav.header div.navbar-inner
+{
+    background: transparent;
+    border: 0;
+    box-shadow: none;
 }
 
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
+
+nav.header div.navbar-inner .brand
+{
+    color: #fff;
+    text-shadow: none;
 }
 
-.validation-summary-errors {
-    font-weight: bold;
-    color: #f00;
+div.box
+{
+    margin: 10px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.validation-summary-valid {
-    display: none;
+div.box:last-child
+{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: 142px; /* .push must be the same height as .footer */
+}
+
+.footer
+{
+    background: #fff;
+}
+
+
+.newuser
+{
+    padding: 10px;
 }
