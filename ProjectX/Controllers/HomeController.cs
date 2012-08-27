@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjectX.Models;
 using System.Web.Mvc;
+
 
 namespace ProjectX.Controllers
 {
@@ -13,7 +15,6 @@ namespace ProjectX.Controllers
 
         public ActionResult Index()
         {
-
             return View();
         }
 
