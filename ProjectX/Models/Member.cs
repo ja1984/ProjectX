@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjectX.Helpers;
 
 namespace ProjectX.Models
 {
@@ -19,6 +20,19 @@ namespace ProjectX.Models
         public bool DisplayEmail { get; set; }
         public DateTime Joined { get; set; }
 
+        public string Image(ProfileImageSize imageSize)
+        {
+
+            return new MemberHelper().GetGravatar(GravatarEmail, imageSize);
+        }
+    }
+
+    public enum ProfileImageSize
+    {
+        Small = 30,
+        Normal = 40,
+        Large = 80,
+        Extreme = 280
     }
 
     public class MemberRegisterModel
