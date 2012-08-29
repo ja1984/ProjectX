@@ -29,7 +29,7 @@ namespace ProjectX.Models
 
     public enum ProfileImageSize
     {
-        Small = 30,
+        Small = 20,
         Normal = 40,
         Large = 80,
         Extreme = 280
