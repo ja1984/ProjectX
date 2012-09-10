@@ -26,11 +26,7 @@ namespace ProjectX
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/fancybox").Include(
-                        "~/Scripts/jquery.fancybox.pack.js", "~/Scripts/jquery.fancybox-buttons.js"));
-
-
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/site.css", "~/Content/jquery.fancybox.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

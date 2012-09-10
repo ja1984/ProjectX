@@ -27,7 +27,8 @@
     </div>
     <div class="row-fluid box">
         <ul class="unstyled">
-            <li><a href="#">Github</a></li>
+            <li>by: @Html.ActionLink(@Model.Project.Creator.DisplayName, "details", "member", new { id = Model.Project.Creator.Id })</li>
+            <li>added: @Model.Project.Created</li>
         </ul>
     </div>
     <div class="row-fluid box github">
@@ -64,14 +65,8 @@
     <script type="text/javascript">
         $(function () {
             $(".fancybox").fancybox({
-                overlay: {
-                    css: {
-                    'overflow': 'hidden'
-                    }
-                },
                 openEffect: 'none',
                 closeEffect: 'none',
-                scrolling: 'yes'
             });
 
             var config = {
