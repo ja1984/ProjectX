@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectX.Models;
 
 namespace ProjectX.Controllers
 {
@@ -18,7 +19,7 @@ namespace ProjectX.Controllers
 
         public ActionResult Details()
         {
-            return View();
+            return View(new ProjectViewModel { Project = new Project().GetFakeProject() });
         }
 
     }

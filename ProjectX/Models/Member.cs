@@ -22,9 +22,23 @@ namespace ProjectX.Models
 
         public string Image(ProfileImageSize imageSize)
         {
-
             return new MemberHelper().GetGravatar(GravatarEmail, imageSize);
         }
+
+
+        public Member GetFakeMember()
+        {
+            return new Member
+            {
+                DisplayEmail = true,
+                DisplayName = "Jonathan Andersson",
+                Email = "ja1984@gmail.com",
+                FirstName = "Jonathan",
+                LastName = "Andersson",
+                GravatarEmail = "ja1984@gmail.com"
+            };
+        }
+
     }
 
     public enum ProfileImageSize

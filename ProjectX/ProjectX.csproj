@@ -153,19 +153,28 @@
     </Compile>
     <Compile Include="Helpers\MemberHelper.cs" />
     <Compile Include="Models\ConfigSettings.cs" />
+    <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\blank.gif" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fancybox_loading.gif" />
+    <Content Include="Content\fancybox_overlay.png" />
+    <Content Include="Content\fancybox_sprite.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\icon_ano.png" />
     <Content Include="Content\images\octocat-spinner-64.gif" />
     <Content Include="Content\images\test.png" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -254,6 +263,16 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-13-02.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-13-09.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-13-33.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-13-40.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-05.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-14.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-21.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-27.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-39.png" />
+    <Content Include="Uploads\Screenshot_2012-08-29-09-14-51.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

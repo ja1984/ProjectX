@@ -8,7 +8,7 @@
         return inner;
     }
 
-    pub.viewModel = function (user, rep) {
+    pub.viewModel = function (config) {
         var inner = {}
 
         inner.commits = ko.observableArray([]);
@@ -16,7 +16,7 @@
 
         inner.getCommits = function () {
             $.ajax({
-                url: "https://api.github.com/repos/" + user + "/" + rep + "/commits",
+                url: "https://api.github.com/repos/" + config.user + "/" + config.repository + "/commits",
                 data: "",
                 success: function (response) {
                     var i = 0;
