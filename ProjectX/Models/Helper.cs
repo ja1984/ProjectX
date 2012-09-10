@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace ProjectX.Models
 {
     public class Helper : Member
     {
-        public Position Position { get; set; }        
+        public Role Role { get; set; }
     }
 
 
-    public enum Position
+    public enum Role
     {
         Developer,
         Designer,

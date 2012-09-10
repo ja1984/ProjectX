@@ -151,7 +151,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HelperService.cs" />
     <Compile Include="Helpers\MemberHelper.cs" />
+    <Compile Include="Helpers\ProjectHelper.cs" />
     <Compile Include="Models\ConfigSettings.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Image.cs" />

@@ -21,6 +21,21 @@ namespace ProjectX
             );
 
             routes.MapRoute(
+                "ProjectDetails",
+                "project/{id}/{projectName}", // URL
+                new { controller = "project", action = "details", projectName = UrlParameter.Optional }, // URL Defaults
+                new { id = @"\d+" } // URL Constraints
+            );
+
+
+            routes.MapRoute(
+                "MemberDetails",
+                "member/{id}/{userName}", // URL
+                new { controller = "member", action = "details", userName = UrlParameter.Optional }, // URL Defaults
+                new { id = @"\d+" } // URL Constraints
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

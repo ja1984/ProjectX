@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectX.Models;
+using ProjectX.Helpers;
 
 namespace ProjectX.Controllers
 {
@@ -17,9 +18,22 @@ namespace ProjectX.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int id, string projectName)
         {
-            return View(new ProjectViewModel { Project = new Project().GetFakeProject() });
+            
+
+            var projectViewModel = new ProjectViewModel { Project = new Project().GetFakeProject() };
+
+            string expectedName = HelperService.GenerateSlug(projectViewModel.Project.Name);
+            string actualName = (projectName ?? "").ToLower();
+
+            // permanently redirect to the correct URL
+            if (expectedName != actualName)
+            {
+                return RedirectToActionPermanent("details", "project", new { id = projectViewModel.Project.Id, projectName = expectedName });
+            }
+
+            return View(projectViewModel);
         }
 
     }

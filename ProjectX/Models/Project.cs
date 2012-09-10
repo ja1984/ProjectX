@@ -31,7 +31,9 @@ namespace ProjectX.Models
                     GitHubName = "Twee",
                     Helpers = new List<Helper>(),
                     Images = new Image().GetFakeImages(),
-                    Name = "Twee"
+                    Name = "Twee",
+                    Id = 1
+
                 };
         }
 
