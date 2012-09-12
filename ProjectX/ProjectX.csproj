@@ -290,6 +290,7 @@
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Member\Details.cshtml" />
     <Content Include="Views\Member\Register.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

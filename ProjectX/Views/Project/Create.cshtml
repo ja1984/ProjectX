@@ -1,0 +1,53 @@
+﻿@model ProjectX.Models.Project.ProjectRegisterModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="span8" style="padding:0 10px;">
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Add a project</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GitHubName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GitHubName)
+            @Html.ValidationMessageFor(model => model.GitHubName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Description, new { @class = "big" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+
+}
+</div>
+<div class="span4"></div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

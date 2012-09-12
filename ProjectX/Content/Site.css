@@ -139,3 +139,14 @@ div.box:last-child
     width: 150px;
     height: 4px;
 }
+
+.big
+{
+    width:590px;
+    height:230px;
+}
+
+.field-validation-error
+{
+    color:#B94A48;
+}

@@ -36,5 +36,9 @@ namespace ProjectX.Controllers
             return View(projectViewModel);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectX.Models
 {
@@ -36,6 +38,35 @@ namespace ProjectX.Models
 
                 };
         }
+
+        public class ProjectRegisterModel
+        {
+            //public List<Image> Images { get; set; }
+            //public List<Helper> Helpers { get; set; }
+
+            [Required]
+            [Display(Name = "Project name")]
+            public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "GitHub name")]
+            public string GitHubName { get; set; }
+
+            [Required]
+            [Display(Name = "Please tell potential helpers what you're creating")]
+            public string Description { get; set; }
+
+            [Display(AutoGenerateField = false)]
+            public Member Creator { get; set; }
+
+
+        }
+
+
+        
+
+
+
 
     }
 
