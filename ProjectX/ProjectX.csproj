@@ -264,6 +264,7 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Screenshot_2012-08-29-09-13-02.png" />
