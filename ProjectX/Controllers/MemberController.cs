@@ -32,7 +32,7 @@ namespace ProjectX.Controllers
                 GravatarEmail = member.GravatarEmail,
                 Joined = member.Joined,
                 LastName = member.LastName,
-                Id = member.Id
+                Id = member.Id,
             };
 
             string expectedName = HelperService.GenerateSlug(member.UserName);
@@ -44,8 +44,13 @@ namespace ProjectX.Controllers
                 return RedirectToActionPermanent("details", "member", new { id = member.Id, userName = expectedName });
             }
 
-            return View();
+            return View(memberViewModel);
         }
 
+
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }

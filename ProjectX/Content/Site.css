@@ -121,3 +121,21 @@ div.box:last-child
 {
     padding: 10px;
 }
+
+
+#DisplayEmail
+{
+    margin-top: 0;
+}
+
+#Password
+{
+    margin-bottom: 3px;
+}
+
+.passwordStrength-container
+{
+    background: #ddd;
+    width: 150px;
+    height: 4px;
+}

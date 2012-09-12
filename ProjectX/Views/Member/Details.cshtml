@@ -1,9 +1,10 @@
-﻿@{
+﻿@model ProjectX.Models.MemberViewModel
+@{
     ViewBag.Title = "View";
 }
 <div class="span8" style="padding: 0 0 10px 10px;">
 
-    <h2>Jonathan Andersson <span class="label label-info" style="vertical-align:top;">System Developer</span></h2>
+    <h2>@Model.DisplayName <span class="label label-info" style="vertical-align:top;">System Developer</span></h2>
     
     <p>
         Look, just because I don't be givin' no man a foot massage don't make it right for

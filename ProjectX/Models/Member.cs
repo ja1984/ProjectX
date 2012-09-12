@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ProjectX.Helpers;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectX.Models
 {
@@ -15,13 +16,12 @@ namespace ProjectX.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public string GravatarEmail { get; set; }
         public string GitHubUserName { get; set; }
         public bool DisplayEmail { get; set; }
         public DateTime Joined { get; set; }
         public string UserName { get; set; }
-        //public JobTitle JobTitle {get;set;}
+        public string Description { get; set; }
 
         public string Image(ProfileImageSize imageSize)
         {
@@ -56,8 +56,6 @@ namespace ProjectX.Models
         }
     }
 
-
-
     public enum ProfileImageSize
     {
         Small = 20,
@@ -68,12 +66,27 @@ namespace ProjectX.Models
 
     public class MemberRegisterModel
     {
+        [Required]
         public string Email { get; set; }
+
+        [Required]
         public string Password { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
+
+        [Display(Name = "Gravatar email address")]
         public string GravatarEmail { get; set; }
+
+        [Display(Name = "Github user name")]
         public string GitHubUserName { get; set; }
+        
+        [Display(Name="Display my email")]
         public bool DisplayEmail { get; set; }
     }
 
@@ -89,6 +102,7 @@ namespace ProjectX.Models
         public bool DisplayEmail { get; set; }
         public DateTime Joined { get; set; }
         public int Id { get; set; }
+        public string Description { get; set; }
     }
 
 }
