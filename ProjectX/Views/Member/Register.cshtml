@@ -34,17 +34,17 @@
             </div>
             <div class="editor-field">
                 @Html.PasswordFor(model => model.Password)
+                <div class="passwordStrength-container">
+                    <div class="password-strength">
+                    </div>
+                    <div class="password-strength-separator" style="left: 25%">
+                    </div>
+                    <div class="password-strength-separator" style="left: 50%">
+                    </div>
+                    <div class="password-strength-separator" style="left: 75%">
+                    </div>
+                </div>
                 @Html.ValidationMessageFor(model => model.Password)
-            </div>
-            <div class="passwordStrength-container">
-                <div class="password-strength">
-                </div>
-                <div class="password-strength-separator" style="left: 25%">
-                </div>
-                <div class="password-strength-separator" style="left: 50%">
-                </div>
-                <div class="password-strength-separator" style="left: 75%">
-                </div>
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.FirstName)
@@ -68,6 +68,16 @@
                 @Html.ValidationMessageFor(model => model.GitHubUserName)
             </div>
             <div class="editor-label">
+                Field of interest
+            </div>
+            <div class="editor-field">
+                <select>
+                    <option>System Developer</option>
+                    <option>Designer</option>
+                    <option>Tester</option>
+                </select>
+            </div>
+            <div class="editor-label">
                 @Html.EditorFor(model => model.DisplayEmail, new { style = "margin-top: 0px;" })
                 @Html.LabelFor(model => model.DisplayEmail, new { style = "display: inline;" })
             </div>
@@ -82,24 +92,24 @@
         Why register?</h3>
     <ul id="whyjoin">
         <li>
-            <div class="well well-small">
-                <p class="header">
+            <div class="alert alert-info">
+                <p class="header strong">
                     Collaborate with others</p>
                 <p class="description">
                     blablalblab fdjksdfklfsdf</p>
             </div>
         </li>
         <li>
-            <div class="well well-small">
-                <p class="header">
+            <div class="alert alert-info">
+                <p class="header strong">
                     Follow interesting projects from the start</p>
                 <p class="description">
                     blablalblab fdjksdfklfsdf</p>
             </div>
         </li>
         <li>
-            <div class="well well-small">
-                <p class="header">
+            <div class="alert alert-info">
+                <p class="header strong">
                     Help creating something awesome!</p>
                 <p class="description">
                     blablalblab fdjksdfklfsdf</p>
