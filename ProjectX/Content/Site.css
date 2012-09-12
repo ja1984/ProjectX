@@ -194,4 +194,5 @@ fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fields
 {
     height: 26px;
     width: 26px;
+    vertical-align: top; 
 }
