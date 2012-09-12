@@ -53,7 +53,7 @@ namespace ProjectX.Models
             public string GitHubName { get; set; }
 
             [Required]
-            [Display(Name = "Please tell potential helpers what you're creating")]
+            [Display(Name = "Please tell potential minions something about the project")]
             public string Description { get; set; }
 
             [Display(AutoGenerateField = false)]

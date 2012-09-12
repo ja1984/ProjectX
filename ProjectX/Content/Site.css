@@ -196,3 +196,15 @@ fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fields
     width: 26px;
     vertical-align: top; 
 }
+
+#Helpers li
+{
+    padding:3px;
+}
+
+#Helpers li:hover
+{
+    cursor: pointer;
+    background: #B94A48;
+    color: #fff;
+}
