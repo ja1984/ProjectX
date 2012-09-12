@@ -175,6 +175,7 @@
     <Content Include="Content\images\icon_ano.png" />
     <Content Include="Content\images\octocat-spinner-64.gif" />
     <Content Include="Content\images\test.png" />
+    <Content Include="Content\images\whyjoin.png" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
