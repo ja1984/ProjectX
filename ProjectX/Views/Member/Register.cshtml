@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Register";
 }
-<div class="span8" style="padding: 0 10px;">
+<div class="span7" style="padding: 0 10px;">
     <h2>
         Register</h2>
     @using (Html.BeginForm())
@@ -77,7 +77,35 @@
         </fieldset>
     }
 </div>
-<div class="span4">
+<div class="span5 right">
+    <h3>
+        Why register?</h3>
+    <ul id="whyjoin">
+        <li>
+            <div class="well well-small">
+                <p class="header">
+                    Collaborate with others</p>
+                <p class="description">
+                    blablalblab fdjksdfklfsdf</p>
+            </div>
+        </li>
+        <li>
+            <div class="well well-small">
+                <p class="header">
+                    Follow interesting projects from the start</p>
+                <p class="description">
+                    blablalblab fdjksdfklfsdf</p>
+            </div>
+        </li>
+        <li>
+            <div class="well well-small">
+                <p class="header">
+                    Help creating something awesome!</p>
+                <p class="description">
+                    blablalblab fdjksdfklfsdf</p>
+            </div>
+        </li>
+    </ul>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

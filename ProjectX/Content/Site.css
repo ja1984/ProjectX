@@ -196,3 +196,40 @@ fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fields
     width: 26px;
     vertical-align: top; 
 }
+
+
+
+ul#whyjoin
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#whyjoin li
+{
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.right
+{
+    padding: 10px 10px 10px 0;
+}
+
+div.well p
+{
+    font-size: 12px;
+}
+
+div.well p.header
+{
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+div.well p.description
+{
+    font-weight: normal;
+}
