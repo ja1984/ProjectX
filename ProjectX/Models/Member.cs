@@ -83,7 +83,7 @@ namespace ProjectX.Models
         [Display(Name = "Gravatar email address")]
         public string GravatarEmail { get; set; }
 
-        [Display(Name = "Github user name")]
+        [Display(Name = "Github username")]
         public string GitHubUserName { get; set; }
         
         [Display(Name="Display my email")]

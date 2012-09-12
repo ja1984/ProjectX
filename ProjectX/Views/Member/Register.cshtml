@@ -16,8 +16,22 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Email)
+            <img src="http://www.gravatar.com/avatar/af7b74cc88941dd74718e4a24de37108?s=26&d=retro" style="vertical-align: top;" class="img-polaroid">
+            <a href="javascript:void(0);" class="showgravatar">Change gravatar email</a>
             @Html.ValidationMessageFor(model => model.Email)
         </div>
+
+
+        <div id="gravatar" style="display: none;">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GravatarEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GravatarEmail)
+            @Html.ValidationMessageFor(model => model.GravatarEmail)
+        </div>
+        </div>
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Password)
@@ -85,6 +99,14 @@
     <script type="text/javascript">
         $(function () {
             $('#Password').password_strength();
+
+            $(".showgravatar").click(function () {
+                var gravatar = $("#gravatar");
+                gravatar.find("#GravatarEmail").val($("#Email").val());
+
+                gravatar.slideDown();
+            });
+
         });
     </script>
 }

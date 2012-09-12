@@ -249,6 +249,7 @@
     <Content Include="Scripts\jquery-ui-1.8.23.min.js">
       <DependentUpon>jquery-ui-1.8.23.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.password_strength.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js">
       <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
