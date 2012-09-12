@@ -215,16 +215,16 @@ fieldset .input-validation-error
     vertical-align: top; 
 }
 
-
-
-ul#whyjoin
+#Helpers li
 {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    padding:3px;
 }
 
-ul#whyjoin li
+#Helpers li:hover
+{
+    cursor: pointer;
+    background: #B94A48;
+    color: #fff;
 {
     margin-bottom: 10px;
 }
