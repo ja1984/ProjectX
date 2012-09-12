@@ -1,111 +1,127 @@
 ﻿@model ProjectX.Models.MemberRegisterModel
-
 @{
     ViewBag.Title = "Register";
 }
 <div class="span8" style="padding: 0 10px;">
-<h2>Register</h2>
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+    <h2>
+        Register</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>MemberRegisterModel</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            <img src="http://www.gravatar.com/avatar/af7b74cc88941dd74718e4a24de37108?s=26&d=retro" style="vertical-align: top;" class="img-polaroid">
-            <a href="javascript:void(0);" class="showgravatar">Change gravatar email</a>
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-
-        <div id="gravatar" style="display: none;">
-        <div class="editor-label">
-            @Html.LabelFor(model => model.GravatarEmail)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GravatarEmail)
-            @Html.ValidationMessageFor(model => model.GravatarEmail)
-        </div>
-        </div>
-
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.PasswordFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
-        <div class="passwordStrength-container">
-        <div class="password-strength"></div>
-        <div class="password-strength-separator" style="left: 25%"></div>
-        <div class="password-strength-separator" style="left: 50%"></div>
-        <div class="password-strength-separator" style="left: 75%"></div>
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.GravatarEmail)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GravatarEmail)
-            @Html.ValidationMessageFor(model => model.GravatarEmail)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.GitHubUserName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GitHubUserName)
-            @Html.ValidationMessageFor(model => model.GitHubUserName)
-        </div>
-
-        <div class="editor-label">
-           @Html.EditorFor(model => model.DisplayEmail, new { style= "margin-top: 0px;" }) @Html.LabelFor(model => model.DisplayEmail, new { style = "display: inline;" })
-        </div>
-
-        <p style="margin-top: 10px;">
-            <input type="submit" class="btn btn-success" value="Register" />
-        </p>
-    </fieldset>
-}
+        <fieldset>
+            <legend>MemberRegisterModel</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                <img src="http://www.gravatar.com/avatar/af7b74cc88941dd74718e4a24de37108?s=26&d=mm"
+                    style="vertical-align: top; display: none;" class="img-polaroid gravatarimage">
+                <a href="javascript:void(0);" style="display: none;" class="showgravatar">Change gravatar email</a>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div id="gravatar" style="display: none;">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.GravatarEmail)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.GravatarEmail)
+                    @Html.ValidationMessageFor(model => model.GravatarEmail)
+                </div>
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="passwordStrength-container">
+                <div class="password-strength">
+                </div>
+                <div class="password-strength-separator" style="left: 25%">
+                </div>
+                <div class="password-strength-separator" style="left: 50%">
+                </div>
+                <div class="password-strength-separator" style="left: 75%">
+                </div>
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FirstName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.GitHubUserName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.GitHubUserName)
+                @Html.ValidationMessageFor(model => model.GitHubUserName)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.DisplayEmail, new { style = "margin-top: 0px;" })
+                @Html.LabelFor(model => model.DisplayEmail, new { style = "display: inline;" })
+            </div>
+            <p style="margin-top: 10px;">
+                <input type="submit" class="btn btn-success" value="Register" />
+            </p>
+        </fieldset>
+    }
 </div>
 <div class="span4">
 </div>
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="/Scripts/jquery.password_strength.js" type="text/javascript"></script>
+    <script src="/Scripts/md5.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $('#Password').password_strength();
 
+            $("#Email").blur(function () {
+
+                if ($(".gravatarimage").is(":visible"))
+                    return;
+
+                var me = $(this)
+                if (me.length > 0)
+                    setGravatar(me.val());
+                $(".gravatarimage, .showgravatar").fadeIn();
+            });
+
+            $("#GravatarEmail").keyup(function () {
+                var me = $(this);
+                setGravatar(me.val());
+                if (me.val().length > 12) {
+                }
+            });
+
             $(".showgravatar").click(function () {
+                $(this).hide();
                 var gravatar = $("#gravatar");
                 gravatar.find("#GravatarEmail").val($("#Email").val());
 
                 gravatar.slideDown();
             });
+
+
+            displayGravatar = function (name) {
+                return "http://www.gravatar.com/avatar/" + hex_md5(name) + "?s=26&d=mm";
+            };
+
+            setGravatar = function (name) {
+                $(".gravatarimage").attr("src", displayGravatar(name));
+            }
 
         });
     </script>

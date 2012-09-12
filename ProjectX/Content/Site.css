@@ -180,3 +180,18 @@ fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fields
 {
     color:#B94A48;
 }
+
+
+.showgravatar
+{
+    display: none;
+    vertical-align: top;
+    display: inline-block;
+    padding: 8px 0px;
+}
+
+.gravatarimage
+{
+    height: 26px;
+    width: 26px;
+}

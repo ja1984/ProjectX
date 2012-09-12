@@ -17,7 +17,7 @@ namespace ProjectX.Helpers
             using (MD5 md5Hash = MD5.Create())
             {
 
-                return string.Format("http://www.gravatar.com/avatar/{0}?s={1}", GetMd5Hash(md5Hash, email), (int)imageSize);
+                return string.Format("http://www.gravatar.com/avatar/{0}?s={1}&d=mm", GetMd5Hash(md5Hash, email), (int)imageSize);
             }
         }
 
