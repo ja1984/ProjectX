@@ -23,14 +23,14 @@
             @Html.LabelFor(model => model.Password)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password)
             @Html.ValidationMessageFor(model => model.Password)
         </div>
-        <div class="progress" style="height: 5px; width: 223px; border-radius: 0; background: #ddd;">
-          <div class="bar" style="width: 25%; border-right: 2px solid #fff;"></div>
-          <div class="bar" style="width: 25%; border-right: 2px solid #fff;"></div>
-          <div class="bar" style="width: 25%; border-right: 2px solid #fff;"></div>
-          <div class="bar" style="width: 25%;"></div>
+        <div class="passwordStrength-container">
+        <div class="password-strength"></div>
+        <div class="password-strength-separator" style="left: 25%"></div>
+        <div class="password-strength-separator" style="left: 50%"></div>
+        <div class="password-strength-separator" style="left: 75%"></div>
         </div>
 
         <div class="editor-label">
