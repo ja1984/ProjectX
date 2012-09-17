@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "View";
 }
-<div class="span8" style="padding: 0 0 10px 10px;">
+<div class="span8 left">
     <h2>@Model.Project.Name</h2>
     <!-- start slipsum code -->
     @Html.Raw(Model.Project.Description)
@@ -21,7 +21,7 @@
         </ul>
     </div>
 </div>
-<div class="span4" style="padding: 10px 10px 10px 0;">
+<div class="span4 right">
     <div class="row-fluid">
         <img src="http://placehold.it/281x250" class="img-polaroid">
     </div>

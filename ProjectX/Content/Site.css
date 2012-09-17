@@ -225,13 +225,18 @@ fieldset .input-validation-error
     cursor: pointer;
     background: #B94A48;
     color: #fff;
-{
     margin-bottom: 10px;
 }
 
 .right
 {
     padding: 10px 10px 10px 0;
+}
+
+
+.left
+{
+    padding: 0 0 10px 10px;
 }
 
 
