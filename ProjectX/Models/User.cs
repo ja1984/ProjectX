@@ -18,7 +18,7 @@ namespace ProjectX.Models
         public string Email { get; set; }
         public string GravatarEmail { get; set; }
         public string Password { get; set; }
-        public string Salt { get; set; }        
+        public string Salt { get; set; }
         public string GitHub { get; set; }
         public bool DisplayEmail { get; set; }
         public DateTime Created { get; set; }
@@ -65,7 +65,7 @@ namespace ProjectX.Models
         Large = 80,
         Extreme = 280
     }
-    
+
     public class UserRegisterModel
     {
         [Required]
@@ -90,8 +90,8 @@ namespace ProjectX.Models
 
         [Display(Name = "Github username")]
         public string GitHubUserName { get; set; }
-        
-        [Display(Name="Display my email")]
+
+        [Display(Name = "Display my email")]
         public bool DisplayEmail { get; set; }
 
         public int Role { get; set; }
@@ -110,6 +110,15 @@ namespace ProjectX.Models
         public DateTime Joined { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
+    }
+
+    public class UserLoginModel
+    {
+        [Required]
+        public string Username { get; set; }
+
+        [Required]
+        public string Password { get; set; }
     }
 
 }

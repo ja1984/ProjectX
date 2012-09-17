@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using ProjectX.Models;
 using System.Text;
+using System.Web.Security;
 
 namespace ProjectX.Helpers
 {
@@ -43,7 +44,6 @@ namespace ProjectX.Helpers
         {
             using (MD5 md5Hash = MD5.Create())
             {
-
                 return string.Format("http://www.gravatar.com/avatar/{0}?s={1}&d=mm", GetMd5Hash(md5Hash, email), (int)imageSize);
             }
         }
@@ -68,6 +68,22 @@ namespace ProjectX.Helpers
             // Return the hexadecimal string. 
             return sBuilder.ToString();
         }
+
+
+        public static string GenerateSalt(string username)
+        {
+            string toBeHashed = username.Substring(0, 1);
+            toBeHashed += username.Length;
+            toBeHashed += username.Substring(username.Length - 1, 1);
+
+            return GetMd5Hash(MD5.Create(), toBeHashed);
+        }
+
+        public static string GenerateHash(string salt, string password)
+        {
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(string.Concat(salt, password), "SHA1");
+        }
+
 
     }
 }

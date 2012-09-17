@@ -186,6 +186,7 @@ div.box:last-child
 .footer
 {
     background: url(/Content/images/test.png);
+    color: #fff;
 }
 
 

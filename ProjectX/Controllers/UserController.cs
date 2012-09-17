@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ProjectX.Models;
 using ProjectX.Helpers;
 using ProjectX.Repository;
+using System.Web.Security;
 
 namespace ProjectX.Controllers
 {
@@ -21,10 +22,47 @@ namespace ProjectX.Controllers
         }
 
 
+
         public ActionResult Index()
         {
             return View();
         }
+
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserLoginModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = userRepository.Login(login.Username);
+
+                if (user == null)
+                    return View();
+
+                if(HelperService.GenerateHash(HelperService.GenerateSalt(user.UserName),login.Password) == user.Password)
+                {
+                    FormsAuthentication.SetAuthCookie(user.DisplayName, true);
+                    return RedirectToAction("Index","Home");
+                }
+
+            }
+
+            return View();
+        }
+
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+
+        }
+
 
         public ActionResult Details(int id, string userName)
         {
@@ -68,6 +106,8 @@ namespace ProjectX.Controllers
                 return View();
 
 
+            var salt = HelperService.GenerateSalt(userRegisterModel.UserName);
+
             var id = userRepository.Add(new User
                    {
                        UserName = userRegisterModel.UserName,
@@ -75,8 +115,8 @@ namespace ProjectX.Controllers
                        LastName = userRegisterModel.LastName,
                        Email = userRegisterModel.Email,
                        GravatarEmail = userRegisterModel.GravatarEmail ?? userRegisterModel.Email,
-                       Password = userRegisterModel.Password,
-                       Salt = string.Empty,
+                       Password = HelperService.GenerateHash(salt,userRegisterModel.Password),
+                       Salt = salt,
                        GitHub = userRegisterModel.GitHubUserName,
                        Created = DateTime.Now,
                        Role = userRegisterModel.Role,
