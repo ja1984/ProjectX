@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace ProjectX.Models
 {
-    public class Helper : Member
+    public class Collaborator : Member
     {
         public Role Role { get; set; }
     }

@@ -1,10 +1,4 @@
-﻿/*----------------------------------------------------------
-The base color for this template is #5c87b2. If you'd like
-to use a different color start by replacing all instances of
-#5c87b2 with your new color.
-----------------------------------------------------------*/
-
-html {
+﻿html {
     height: 100%;
 }
 
@@ -27,9 +21,7 @@ article.container
     margin-bottom: 20px;
 }
 
-.dropshadow {
-    box-shadow: 0px 0px 10px rgba(0,0,0, .1);
-}
+
 
 h1, h2, h3, h4, h5, h5
 {
@@ -101,21 +93,6 @@ div.box:last-child
 }
 
 
-.wrapper {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-	height: 142px; /* .push must be the same height as .footer */
-}
-
-.footer
-{
-    background: url(/Content/images/test.png);
-}
-
 
 .newuser
 {
@@ -132,73 +109,6 @@ div.box:last-child
 {
     margin-bottom: 3px;
 }
-
-.passwordStrength-container
-{
-    background: #ddd;
-    width: 331px;
-    height: 4px;
-    position: relative;
-    margin-bottom: 9px;
-}
-
-.password-strength
-{
-    position: absolute;
-    background: blue;
-    height: 4px;
-}
-
-
-.password-strength-separator
-{
-    position: absolute;
-    width: 2px;
-    background: #fff;
-    height: 4px;
-}
-
-fieldset input[type="text"],fieldset input[type="password"],fieldset textarea, fieldset select
-{
-    border-radius: 0;
-    padding: 7px;
-    width: 315px;
-}
-
-fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fieldset textarea:focus
-{
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
-}
-
-fieldset select
-{
-    width: 331px;
-    height:  36px;
-}
-
-.big
-{
-    width:590px;
-    height:230px;
-}
-
-.field-validation-error
-{
-    color:#B94A48;
-    display: block;
-    margin-bottom: 5px;
-}
-
-fieldset label
-{
-    margin-bottom: 0;
-}
-
-fieldset .input-validation-error
-{
-    margin-bottom: 0;
-}
-
 
 .showgravatar
 {
@@ -228,6 +138,15 @@ fieldset .input-validation-error
     margin-bottom: 10px;
 }
 
+
+.alert p.header
+{
+    margin-bottom: 0;
+}
+
+
+/* -------------------------- Misc Layout ------------------------------*/
+
 .right
 {
     padding: 10px 10px 10px 0;
@@ -239,13 +158,101 @@ fieldset .input-validation-error
     padding: 0 0 10px 10px;
 }
 
-
 .strong 
 {
     font-weight: bold;
 }
 
-.alert p.header
+.big
+{
+    width:590px;
+    height:230px;
+}
+
+.dropshadow {
+    box-shadow: 0px 0px 10px rgba(0,0,0, .1);
+}
+
+/* ------------------------- Footer ----------------------- */
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: 142px; /* .push must be the same height as .footer */
+}
+
+.footer
+{
+    background: url(/Content/images/test.png);
+}
+
+
+
+
+/* ------------------------- Password strength ----------------------- */
+.passwordStrength-container
+{
+    background: #ddd;
+    width: 331px;
+    height: 4px;
+    position: relative;
+    margin-bottom: 9px;
+}
+
+.password-strength
+{
+    position: absolute;
+    background: blue;
+    height: 4px;
+}
+
+
+.password-strength-separator
+{
+    position: absolute;
+    width: 2px;
+    background: #fff;
+    height: 4px;
+}
+
+
+/*---------------------- Forms ----------------------*/
+fieldset input[type="text"],fieldset input[type="password"],fieldset textarea, fieldset select
+{
+    border-radius: 0;
+    padding: 7px;
+    width: 315px;
+}
+
+fieldset input[type="text"]:focus, fieldset input[type="password"]:focus, fieldset textarea:focus
+{
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+}
+
+fieldset select
+{
+    width: 331px;
+    height:  36px;
+}
+
+
+/*---------------------- Validation ----------------------*/
+.field-validation-error
+{
+    color:#B94A48;
+    display: block;
+    margin-bottom: 5px;
+}
+
+fieldset label
+{
+    margin-bottom: 0;
+}
+
+fieldset .input-validation-error
 {
     margin-bottom: 0;
 }

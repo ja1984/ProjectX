@@ -41,7 +41,7 @@
 </div>
 <div class="span4 right">
     <div class="row-fluid">
-        <img src="@Html.Raw(new ProjectX.Helpers.MemberHelper().GetGravatar("ja1984@gmail.com", ProjectX.Models.ProfileImageSize.Extreme))" class="img-polaroid">
+        <img src="@Html.Raw(ProjectX.Helpers.HelperService.GetGravatar("ja1984@gmail.com", ProjectX.Models.ProfileImageSize.Extreme))" class="img-polaroid">
     </div>
     <div class="row-fluid box personal-information">
         <ul class="unstyled">

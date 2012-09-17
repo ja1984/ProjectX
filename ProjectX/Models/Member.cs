@@ -25,7 +25,8 @@ namespace ProjectX.Models
 
         public string Image(ProfileImageSize imageSize)
         {
-            return new MemberHelper().GetGravatar(GravatarEmail, imageSize);
+            //return new MemberHelper().GetGravatar(GravatarEmail, imageSize);
+            return HelperService.GetGravatar(GravatarEmail, imageSize);
         }
         private string _displayName;
         public string DisplayName
