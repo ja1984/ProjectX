@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectX.Models;
 using ProjectX.Helpers;
+using ProjectX.Repository;
 
 namespace ProjectX.Controllers
 {
@@ -12,6 +13,13 @@ namespace ProjectX.Controllers
     {
         //
         // GET: /User/
+        private readonly IUserRepository userRepository;
+
+        public UserController(IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
+
 
         public ActionResult Index()
         {
@@ -20,7 +28,7 @@ namespace ProjectX.Controllers
 
         public ActionResult Details(int id, string userName)
         {
-            var user = new User().GetFakeUser();
+            var user = userRepository.Get(id);
 
             var userViewModel = new UserViewModel
             {
@@ -50,6 +58,34 @@ namespace ProjectX.Controllers
 
         public ActionResult Register()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(UserRegisterModel userRegisterModel)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+
+            var id = userRepository.Add(new User
+                   {
+                       UserName = userRegisterModel.UserName,
+                       FirstName = userRegisterModel.FirstName,
+                       LastName = userRegisterModel.LastName,
+                       Email = userRegisterModel.Email,
+                       GravatarEmail = userRegisterModel.GravatarEmail ?? userRegisterModel.Email,
+                       Password = userRegisterModel.Password,
+                       Salt = string.Empty,
+                       GitHub = userRegisterModel.GitHubUserName,
+                       Created = DateTime.Now,
+                       Role = userRegisterModel.Role,
+                       DisplayEmail = userRegisterModel.DisplayEmail,
+                       Description = string.Empty,
+                       DisplayName = string.Concat(userRegisterModel.FirstName, " ", userRegisterModel.LastName)
+                   });
+
+
             return View();
         }
     }

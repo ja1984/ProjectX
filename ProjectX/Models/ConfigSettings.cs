@@ -21,7 +21,7 @@ namespace ProjectX.Models
         }
         private static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings[""].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
         }
 
         public static string ConnectionString

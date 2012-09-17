@@ -22,7 +22,7 @@ namespace ProjectX.Models
         public string GitHub { get; set; }
         public bool DisplayEmail { get; set; }
         public DateTime Created { get; set; }
-        
+        public int Role { get; set; }
         public string Description { get; set; }
 
         public string Image(ProfileImageSize imageSize)
@@ -65,11 +65,14 @@ namespace ProjectX.Models
         Large = 80,
         Extreme = 280
     }
-
+    
     public class UserRegisterModel
     {
         [Required]
         public string Email { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
 
         [Required]
         public string Password { get; set; }
@@ -90,6 +93,8 @@ namespace ProjectX.Models
         
         [Display(Name="Display my email")]
         public bool DisplayEmail { get; set; }
+
+        public int Role { get; set; }
     }
 
     public class UserViewModel

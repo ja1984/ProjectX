@@ -10,8 +10,16 @@
         @Html.ValidationSummary(true)
 
         <fieldset>
+        <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
             <div class="editor-label">
-                @Html.LabelFor(model => model.Email)
+                @Html.LabelFor(model => model.Email) (this is used when logging in)
             </div>
             <div class="editor-field">
                 @Html.EditorFor(model => model.Email)
@@ -71,10 +79,10 @@
                 Field of interest
             </div>
             <div class="editor-field">
-                <select>
-                    <option>System Developer</option>
-                    <option>Designer</option>
-                    <option>Tester</option>
+                <select id="Role" name="Role">
+                    <option value="0">System Developer</option>
+                    <option value="1">Designer</option>
+                    <option value="2">Tester</option>
                 </select>
             </div>
             <div class="editor-label">

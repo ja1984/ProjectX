@@ -15,6 +15,8 @@ namespace ProjectX.Controllers
 
         public ActionResult Index()
         {
+
+
             return View();
         }
 
