@@ -21,7 +21,13 @@ namespace ProjectX.Controllers
             this.userRepository = userRepository;
         }
 
+        public PartialViewResult UserBar()
+        {
 
+            var user = userRepository.Get(int.Parse(User.Identity.Name));
+
+            return PartialView(user);
+        }
 
         public ActionResult Index()
         {
@@ -42,7 +48,10 @@ namespace ProjectX.Controllers
                 var user = userRepository.Login(login.Username);
 
                 if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "");
                     return View();
+                }
 
                 if(HelperService.GenerateHash(HelperService.GenerateSalt(user.UserName),login.Password) == user.Password)
                 {
@@ -52,6 +61,7 @@ namespace ProjectX.Controllers
 
             }
 
+            ModelState.AddModelError(string.Empty, "");
             return View();
         }
 

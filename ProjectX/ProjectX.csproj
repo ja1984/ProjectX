@@ -303,6 +303,7 @@
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\login.cshtml" />
+    <Content Include="Views\Shared\UserBar.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

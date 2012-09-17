@@ -71,7 +71,9 @@ namespace ProjectX.Models
         [Required]
         public string Email { get; set; }
 
+        
         [Required]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
