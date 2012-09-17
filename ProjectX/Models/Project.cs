@@ -60,8 +60,6 @@ namespace ProjectX.Models
         public string Description { get; set; }
         [Display(AutoGenerateField = false)]
         public User Creator { get; set; }
-
-
     }
 
 

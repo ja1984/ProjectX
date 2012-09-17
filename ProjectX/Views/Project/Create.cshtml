@@ -31,7 +31,7 @@
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
             <p>
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Create" class="btn btn-success" id="submit" />
             </p>
         </fieldset>
     </div>
@@ -58,11 +58,12 @@
             <h5 style="margin:0;">Minions</h5>
             Need help with design?<br /> Add a designer spot, need more?<br /> Guess what...</div>
             <ul style="list-style-type:none;" id="Helpers" data-bind="foreach: helpers">
-                 <li data-bind="click: removeHelper"><i data-bind="attr: {class : image}"></i> Open spot for a <span data-bind="text:role"></span></li>
+                 <li data-bind="click: removeHelper"><i data-bind="attr: {class : image}"></i> Open spot for a <span data-bind="text:displayRole"></span></li>
             </ul>
 
             </fieldset>
         </fieldset>
+        <input type="hidden" id="hidHelpers" name="Collaborators" data-bind="value: requestedHelpers" />
     </div>
 }
 @section Scripts {
@@ -80,14 +81,19 @@
 
         $(function () {
 
-        var test = new createModel().viewModel()
+            var test = new createModel().viewModel()
             ko.applyBindings(test);
-            
 
+
+            $("#submit").click(function () {              
+                console.log(test.getHelpers());
+            });
 
             $("#toggleInfo").click(function () {
                 $(".alert").toggle();
             });
+
+
 
         });
  </script>
