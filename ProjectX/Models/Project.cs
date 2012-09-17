@@ -39,33 +39,27 @@ namespace ProjectX.Models
                 };
         }
 
-        public class ProjectRegisterModel
-        {
-            //public List<Image> Images { get; set; }
-            //public List<Helper> Helpers { get; set; }
+    }
 
-            [Required]
-            [Display(Name = "Project name")]
-            public string Name { get; set; }
+    public class ProjectRegisterModel
+    {
+        //public List<Image> Images { get; set; }
+        //public List<Helper> Helpers { get; set; }
 
-            [Required]
-            [Display(Name = "GitHub name")]
-            public string GitHubName { get; set; }
+        [Required(ErrorMessage = "Field is required")]
+        [Display(Name = "Project name")]
+        public string Name { get; set; }
 
-            [Required]
-            [Display(Name = "Please tell potential minions something about the project")]
-            public string Description { get; set; }
+        [Required(ErrorMessage="Field is required")]
+        [Display(Name = "GitHub name")]
+        public string GitHubName { get; set; }
 
-            [Display(AutoGenerateField = false)]
-            public User Creator { get; set; }
+        [Required(ErrorMessage = "Field is required")]
+        [Display(Name = "Please tell potential minions something about the project")]
 
-
-        }
-
-
-        
-
-
+        public string Description { get; set; }
+        [Display(AutoGenerateField = false)]
+        public User Creator { get; set; }
 
 
     }

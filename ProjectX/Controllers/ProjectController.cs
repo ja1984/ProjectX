@@ -42,5 +42,11 @@ namespace ProjectX.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Create(ProjectRegisterModel projectRegisterModel)
+        //{
+            
+        //}
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ProjectX.Models.Project.ProjectRegisterModel
+﻿@model ProjectX.Models.ProjectRegisterModel
 @{
     ViewBag.Title = "Create";
 }
@@ -39,7 +39,7 @@
         <fieldset>
             <legend style="margin-bottom:10px;">  <p style="padding-left:10px; margin:0px 0px 0px;">Minions <span style="font-size:11px;"> - Who do you need?</span></p></legend>
             <ul style="list-style-type:none; padding:3px;">
-                <li><span style="font-size:10px; margin-top:-15px; float:right; vertical-align:middle;"> <a href="javascript:void(0);" id="alert">Whats This <i class="icon-question-sign" style="margin-top:-1px;"></i></a></span></li>
+                <li><span style="font-size:10px; margin-top:-15px; float:right; vertical-align:middle;"> <a href="javascript:void(0);" id="toggleInfo">Whats This <i class="icon-question-sign" style="margin-top:-1px;"></i></a></span></li>
             <div>
                 <a href="javascript:void(0);" data-id="0" data-bind="click: addHelper"><li><i class="icon-pencil"></i> Add spot for developer</li></a>
             </div>
@@ -54,13 +54,13 @@
 
             <fieldset>
             <legend></legend>
+                        <div class="alert alert-info alert-block" style="display:none;padding:5px;font-size:10px;">
+            <h5 style="margin:0;">Minions</h5>
+            Need help with design?<br /> Add a designer spot, need more?<br /> Guess what...</div>
             <ul style="list-style-type:none;" id="Helpers" data-bind="foreach: helpers">
                  <li data-bind="click: removeHelper"><i data-bind="attr: {class : image}"></i> Open spot for a <span data-bind="text:role"></span></li>
             </ul>
-            <div class="alert alert-block" style="display:none;">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <h5>Minions</h5>
-            Click on the corresponding profession to make an open spot that other people can apply for to help you with your project.</div>
+
             </fieldset>
         </fieldset>
     </div>
@@ -80,12 +80,14 @@
 
         $(function () {
 
+        var test = new createModel().viewModel()
+            ko.applyBindings(test);
+            
 
-            ko.applyBindings(new createModel().viewModel());
 
-            $("#alert").click(function () {
-                $(".alert").show();
-            })
+            $("#toggleInfo").click(function () {
+                $(".alert").toggle();
+            });
 
         });
  </script>
