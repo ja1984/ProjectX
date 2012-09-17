@@ -28,9 +28,9 @@ namespace ProjectX.Controllers
                 DisplayName = user.DisplayName,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                GitHubUserName = user.GitHubUserName,
+                GitHubUserName = user.GitHub,
                 GravatarEmail = user.GravatarEmail,
-                Joined = user.Joined,
+                Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
             };
