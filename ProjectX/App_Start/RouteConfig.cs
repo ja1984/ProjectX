@@ -29,9 +29,9 @@ namespace ProjectX
 
 
             routes.MapRoute(
-                "MemberDetails",
-                "member/{id}/{userName}", // URL
-                new { controller = "member", action = "details", userName = UrlParameter.Optional }, // URL Defaults
+                "UserDetails",
+                "user/{id}/{userName}", // URL
+                new { controller = "user", action = "details", userName = UrlParameter.Optional }, // URL Defaults
                 new { id = @"\d+" } // URL Constraints
             );
 
