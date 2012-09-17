@@ -39,7 +39,7 @@
         <fieldset>
             <legend style="margin-bottom:10px;">  <p style="padding-left:10px; margin:0px 0px 0px;">Minions <span style="font-size:11px;"> - Who do you need?</span></p></legend>
             <ul style="list-style-type:none; padding:3px;">
-                <li><span style="font-size:10px; margin-top:-15px; float:right; vertical-align:middle;"> <a href="javascript:void(0);">Whats This <i class="icon-question-sign" style="margin-top:-1px;"></i></a></span></li>
+                <li><span style="font-size:10px; margin-top:-15px; float:right; vertical-align:middle;"> <a href="javascript:void(0);" id="alert">Whats This <i class="icon-question-sign" style="margin-top:-1px;"></i></a></span></li>
             <div>
                 <a href="javascript:void(0);" data-id="0" data-bind="click: addHelper"><li><i class="icon-pencil"></i> Add spot for developer</li></a>
             </div>
@@ -57,6 +57,10 @@
             <ul style="list-style-type:none;" id="Helpers" data-bind="foreach: helpers">
                  <li data-bind="click: removeHelper"><i data-bind="attr: {class : image}"></i> Open spot for a <span data-bind="text:role"></span></li>
             </ul>
+            <div class="alert alert-block" style="display:none;">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h5>Minions</h5>
+            Click on the corresponding profession to make an open spot that other people can apply for to help you with your project.</div>
             </fieldset>
         </fieldset>
     </div>
@@ -69,7 +73,7 @@
     <script src="/Scripts/Createproject.js" type="text/javascript"></script>
     <script type="text/javascript">
 
- 
+
 
 
 
@@ -78,6 +82,10 @@
 
 
             ko.applyBindings(new createModel().viewModel());
+
+            $("#alert").click(function () {
+                $(".alert").show();
+            })
 
         });
  </script>
