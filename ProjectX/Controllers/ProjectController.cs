@@ -22,7 +22,7 @@ namespace ProjectX.Controllers
 
         public ActionResult Details(int id, string projectName)
         {
-            
+
 
             var projectViewModel = new ProjectViewModel { Project = new Project().GetFakeProject() };
 
@@ -40,6 +40,13 @@ namespace ProjectX.Controllers
 
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(ProjectRegisterModel projectRegisterModel, string Collaborators)
+        {
+            string[] words = Collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             return View();
         }
     }

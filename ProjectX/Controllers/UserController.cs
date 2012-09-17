@@ -46,7 +46,7 @@ namespace ProjectX.Controllers
 
                 if(HelperService.GenerateHash(HelperService.GenerateSalt(user.UserName),login.Password) == user.Password)
                 {
-                    FormsAuthentication.SetAuthCookie(user.DisplayName, true);
+                    FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
                     return RedirectToAction("Index","Home");
                 }
 
