@@ -5,7 +5,6 @@ using System.Web;
 using ProjectX.Models;
 using System.Web.Mvc;
 
-
 namespace ProjectX.Controllers
 {
     public class HomeController : Controller
@@ -15,8 +14,16 @@ namespace ProjectX.Controllers
 
         public ActionResult Index()
         {
+
+
+
+
             return View();
         }
 
     }
+
+
+
+
 }

@@ -1,25 +1,32 @@
-﻿@{
+﻿@model IEnumerable<ProjectX.Models.Project>
+@{
     ViewBag.Title = "Index";
 }
-
 <div class="span8 left">
-<h2>Test</h2>
-<div class="row-fluid">
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
+    <h2>
+        Test</h2>
+    <div class="row-fluid">
+        <div class="span4">
+            <img src="http://placehold.it/180x180" class="img-polaroid"></div>
+        <div class="span4">
+            <img src="http://placehold.it/180x180" class="img-polaroid"></div>
+        <div class="span4">
+            <img src="http://placehold.it/180x180" class="img-polaroid"></div>
+    </div>
+    <div>
+        @foreach (var project in Model)
+        {
+            <div>
+                @project.Name
+            </div>
+        }
+    </div>
 </div>
-<div>
-LIISTAAA
-</div>
-</div>
-
 <div class="span4 right">
-<h3>Got an project?</h3>
-<p>
-    ashdasdjkhasdhjasdasd
-    fsdfasdfasdfasdfsdafasdfsdf
-</p>
-@Html.ActionLink("Create peojct", "Create", "Project",new { }, new { @class = "btn" })
-
+    <h3>
+        Got an project?</h3>
+    <p>
+        ashdasdjkhasdhjasdasd fsdfasdfasdfasdfsdafasdfsdf
+    </p>
+    @Html.ActionLink("Create peojct", "Create", "Project", new { }, new { @class = "btn" })
 </div>
