@@ -24,6 +24,9 @@
                         inner.commits.push(new priv.Commit(this));
                     });
                 },
+                error: function () {
+                    $(".github").hide();
+                },
                 dataType: "json"
             });
         }

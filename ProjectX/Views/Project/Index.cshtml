@@ -13,14 +13,33 @@
         <div class="span4">
             <img src="http://placehold.it/180x180" class="img-polaroid"></div>
     </div>
-    <div>
+    <table class="table table-striped" style="margin-top: 25px;">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th style="width: 100px;">
+                    Collaborators
+                </th>
+                <th style="width: 100px;">
+                    Open spots
+                </th>
+            </tr>
+        </thead>
         @foreach (var project in Model)
         {
-            <div>
-                @project.Name
-            </div>
+            <tr>
+                <td>
+                    @Html.ActionLink(@project.Name, "details", "project", new { id = project.Id, projectName = ProjectX.Helpers.HelperService.GenerateSlug(project.Name) }, new { })
+                </td>
+                <td>@project.Collaborators.Count
+                </td>
+                <td>@project.Openings.Count
+                </td>
+            </tr>
         }
-    </div>
+    </table>
 </div>
 <div class="span4 right">
     <h3>

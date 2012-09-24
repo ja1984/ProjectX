@@ -1,0 +1,15 @@
+﻿@model ProjectX.Models.UserViewModel
+<li class="divider-vertical"></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <img src="@Html.Raw(Model.Image(ProjectX.Models.ProfileImageSize.Small))" class="img-polaroid" />
+    @Model.DisplayName <span class="badge badge-important">4</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">Profile</a></li>
+        <li class="divider"></li>
+        <li class="clearfix"><a href="#">Notifications <span class="badge badge-important pull-right">
+            2</span></a></li>
+        <li><a href="#">Messages <span class="badge badge-important pull-right">2</span></a></li>
+        <li class="divider"></li>
+        <li><a href="/user/logout">Sign off</a></li>
+    </ul>
+</li>

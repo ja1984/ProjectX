@@ -3,9 +3,9 @@
     ViewBag.Title = "View";
 }
 <div class="span8 left">
-    <h2>@Model.Project.Name</h2>
+    <h2>@Model.Name</h2>
     <!-- start slipsum code -->
-    @Html.Raw(Model.Project.Description)
+    @Html.Raw(Model.Description)
     <!-- please do not remove this line -->
     <div style="display: none;">
         <a href="http://slipsum.com">lorem ipsum</a>
@@ -47,17 +47,17 @@
         <h4>
             Helpers</h4>
         <ul class="unstyled" style="margin-left: 10px;">
-            <li><i class="icon-star"></i><a href="#">Jonathan Andersson</a></li>
-            <li><i class="icon-pencil"></i><a href="#">Jonathan Andersson</a></li>
-            <li><i class="icon-pencil"></i>Open spot for eveloper</li>
-            <li><i class="icon-pencil"></i>Open spot for developer</li>
-            <li><i class="icon-picture"></i>Open spot for designer</li>
-            <li><i class="icon-picture"></i>Open spot for designer</li>
-            <li><i class="icon-eye-open"></i>Open spot for tester</li>
-            <li><i class="icon-eye-open"></i>Open spot for tester</li>
+        <li><i class="icon-star"></i> @Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
+            @foreach (var spot in Model.Openings)
+            {
+                <li>@spot.Role</li>
+            }
         </ul>
-        <button class="btn btn-info btn-block btn-large">
-            Apply for opening</button>
+        @if (Model.Openings.Any())
+        { 
+            <button class="btn btn-info btn-block btn-large">
+                Apply for opening</button>
+        }
     </div>
 </div>
 @section scripts{
@@ -71,7 +71,7 @@
 
             var config = {
                 user: 'ja1984',
-                repository: '@Model.Project.GitHubName'
+                repository: '@Model.GitHubName'
             };
 
             ko.applyBindings(new GitModel().viewModel(config));
