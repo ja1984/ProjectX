@@ -7,8 +7,7 @@ namespace ProjectX.Model.Entities
 {
     public class Opening : Entity
     {
-        public virtual Project Project { get; set; }
         public virtual int Role { get; set; }
-
+        public virtual Project Project { get; set; }
     }
 }

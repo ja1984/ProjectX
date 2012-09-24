@@ -79,6 +79,7 @@
     <Compile Include="Mappings\CollaboratorMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\ImageMap.cs" />
+    <Compile Include="Mappings\OpeningMap.cs" />
     <Compile Include="Mappings\ProjectMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Nhibernate\Conventions.cs" />

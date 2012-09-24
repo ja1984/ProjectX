@@ -24,10 +24,12 @@ namespace ProjectX.Controllers
         //
         // GET: /User/
 
-        //public PartialViewResult UserBar()
-        //{
-        //    return PartialView(user);
-        //}
+        [ChildActionOnly]
+        public PartialViewResult UserBar()
+        {
+            var user = _dataRepository.Get<User>(int.Parse(User.Identity.Name));
+            return PartialView(new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail  });
+        }
 
         public ActionResult Index()
         {
@@ -40,30 +42,30 @@ namespace ProjectX.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(UserLoginModel login)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = _userRepository.Login(login.Username);
+        [HttpPost]
+        public ActionResult Login(UserLoginModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _dataRepository.FilterBy<User>(x => x.UserName == login.Username || x.Email == login.Username).FirstOrDefault();
 
-        //        if (user == null)
-        //        {
-        //            ModelState.AddModelError(string.Empty, "");
-        //            return View();
-        //        }
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "");
+                    return View();
+                }
 
-        //        if (HelperService.GenerateHash(HelperService.GenerateSalt(user.UserName), login.Password) == user.Password)
-        //        {
-        //            FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
-        //            return RedirectToAction("Index", "Home");
-        //        }
+                if (HelperService.GenerateHash(HelperService.GenerateSalt(user.UserName), login.Password) == user.Password)
+                {
+                    FormsAuthentication.SetAuthCookie(user.Id.ToString(), true);
+                    return RedirectToAction("Index", "Home");
+                }
 
-        //    }
+            }
 
-        //    ModelState.AddModelError(string.Empty, "");
-        //    return View();
-        //}
+            ModelState.AddModelError(string.Empty, "");
+            return View();
+        }
 
 
         public ActionResult Logout()

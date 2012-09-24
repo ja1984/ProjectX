@@ -5,47 +5,43 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectX.Models;
 using ProjectX.Helpers;
+using ProjectX.Model.Interfaces;
+using ProjectX.Model.Entities;
 
 namespace ProjectX.Controllers
 {
     public class ProjectController : Controller
     {
-        //
-        // GET: /Project/
-        //private readonly IProjectRepository _projectRepository;
-        //private readonly IUserRepository _userRepository;
+        private readonly IDataRepository _dataRepository;
 
-        //public ProjectController(IProjectRepository projectRepository, IUserRepository userRepository)
-        //{
-        //    _projectRepository = projectRepository;
-        //    _userRepository = userRepository;
-        //}
+        public ProjectController(IDataRepository dataRepository)
+        {
+            _dataRepository = dataRepository;
+        }
 
 
         public ActionResult Index()
         {
-            //var projects = _projectRepository.Get().ToList();
+            var projects = _dataRepository.All<Project>().ToList();
 
-            return View();
+            return View(projects);
         }
 
         public ActionResult Details(int id, string projectName)
         {
 
+            var project = _dataRepository.Get<Project>(id);
 
-            ////var projectViewModel = new ProjectViewModel { Project = new Project().GetFakeProject() };
+            string expectedName = HelperService.GenerateSlug(project.Name);
+            string actualName = (projectName ?? "").ToLower();
 
-            //string expectedName = HelperService.GenerateSlug(projectViewModel.Project.Name);
-            //string actualName = (projectName ?? "").ToLower();
+            // permanently redirect to the correct URL
+            if (expectedName != actualName)
+            {
+                return RedirectToActionPermanent("details", "project", new { id = project.Id, projectName = expectedName });
+            }
 
-            //// permanently redirect to the correct URL
-            //if (expectedName != actualName)
-            //{
-            //    return RedirectToActionPermanent("details", "project", new { id = projectViewModel.Project.Id, projectName = expectedName });
-            //}
-
-            //return View(projectViewModel);
-            return View();
+            return View(project);
         }
 
         public ActionResult Create()
@@ -53,24 +49,22 @@ namespace ProjectX.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Create(ProjectRegisterModel projectRegisterModel, string Collaborators)
-        //{
-        //    //string[] openings = Collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        [HttpPost]
+        public ActionResult Create(ProjectRegisterModel projectRegisterModel, string Collaborators)
+        {
+            List<string> openings = Collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+            var id = _dataRepository.Save<Project>(new Project
+            {
+                Created = DateTime.Now,
+                Description = projectRegisterModel.Description,
+                Name = projectRegisterModel.Name,
+                GitHubName = projectRegisterModel.GitHubName,
+                User = _dataRepository.Get<User>(int.Parse(User.Identity.Name)),
+                Openings = openings.Select(x => new Opening { Role = int.Parse(x) }).ToList()
+            });
 
-        //    //var id = _projectRepository.Add(new Project
-        //    //{
-        //    //    Created = DateTime.Now,
-        //    //    CreatorId = int.Parse(User.Identity.Name),
-        //    //    Description = projectRegisterModel.Description,
-        //    //    Name = projectRegisterModel.Name,
-        //    //    GitHubName = projectRegisterModel.GitHubName,
-        //    //    Creator = _userRepository.Get(int.Parse(User.Identity.Name))
-        //    //});
-
-
-        //    return View();
-        //}
+            return View();
+        }
     }
 }

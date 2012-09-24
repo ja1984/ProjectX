@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace ProjectX.Model.Entities
 {
     public class User : Entity
@@ -25,19 +26,8 @@ namespace ProjectX.Model.Entities
         public virtual int Role { get; set; }
         public virtual string Description { get; set; }
         public virtual string DisplayName { get; set; }
-
-        //public string Image(ProfileImageSize imageSize)
-        //{
-        //    return HelperService.GetGravatar(GravatarEmail, imageSize);
-        //}
     }
 
-    public enum ProfileImageSize
-    {
-        Small = 20,
-        Normal = 40,
-        Large = 80,
-        Extreme = 280
-    }
+
 
 }

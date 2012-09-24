@@ -23,11 +23,6 @@ namespace ProjectX.Controllers
 
         public ActionResult Index()
         {
-
-
-            var user = _dataRepository.All<User>().ToList();
-
-
             return View();
         }
 
