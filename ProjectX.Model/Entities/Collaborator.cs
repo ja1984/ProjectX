@@ -6,8 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace ProjectX.Model.Entities
 {
-    public class Collaborator : User
+    public class Collaborator : Entity
     {
+        public virtual User User { get; set; }
         public virtual Role Role { get; set; }
     }
 

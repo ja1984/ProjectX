@@ -135,6 +135,7 @@
     <Compile Include="Helpers\HelperService.cs" />
     <Compile Include="Helpers\MemberHelper.cs" />
     <Compile Include="Models\ConfigSettings.cs" />
+    <Compile Include="Models\UserRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -280,7 +281,12 @@
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\Shared\UserBar.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">
+      <Project>{F5539B3E-84AF-43D7-A600-83BF76229D01}</Project>
+      <Name>ProjectX.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

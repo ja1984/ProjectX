@@ -6,11 +6,21 @@ using System.Web.Mvc;
 using ProjectX.Models;
 using ProjectX.Helpers;
 using System.Web.Security;
+using ProjectX.Model.Interfaces;
+using ProjectX.Model.Entities;
 
 namespace ProjectX.Controllers
 {
     public class UserController : Controller
     {
+
+        private readonly IDataRepository _dataRepository;
+
+        public UserController(IDataRepository dataRepository)
+        {
+            _dataRepository = dataRepository;
+        }
+
         //
         // GET: /User/
 
@@ -64,34 +74,34 @@ namespace ProjectX.Controllers
         }
 
 
-        //public ActionResult Details(int id, string userName)
-        //{
-        //    var user = _userRepository.Get(id);
+        public ActionResult Details(int id, string userName)
+        {
+            var user = _dataRepository.Get<User>(id);
 
-        //    var userViewModel = new UserViewModel
-        //    {
-        //        DisplayEmail = user.DisplayEmail,
-        //        DisplayName = user.DisplayName,
-        //        Email = user.Email,
-        //        FirstName = user.FirstName,
-        //        GitHubUserName = user.GitHub,
-        //        GravatarEmail = user.GravatarEmail,
-        //        Joined = user.Created,
-        //        LastName = user.LastName,
-        //        Id = user.Id,
-        //    };
+            var userViewModel = new UserViewModel
+            {
+                DisplayEmail = user.DisplayEmail,
+                DisplayName = user.UserName,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                GitHubUserName = user.GitHub,
+                GravatarEmail = user.GravatarEmail,
+                Joined = user.Created,
+                LastName = user.LastName,
+                Id = user.Id,
+            };
 
-        //    string expectedName = HelperService.GenerateSlug(user.UserName);
-        //    string actualName = (userName ?? "").ToLower();
+            string expectedName = HelperService.GenerateSlug(user.UserName);
+            string actualName = (userName ?? "").ToLower();
 
-        //    // permanently redirect to the correct URL
-        //    if (expectedName != actualName)
-        //    {
-        //        return RedirectToActionPermanent("details", "user", new { id = user.Id, userName = expectedName });
-        //    }
+            // permanently redirect to the correct URL
+            if (expectedName != actualName)
+            {
+                return RedirectToActionPermanent("details", "user", new { id = user.Id, userName = expectedName });
+            }
 
-        //    return View(userViewModel);
-        //}
+            return View(userViewModel);
+        }
 
 
         public ActionResult Register()
@@ -99,34 +109,34 @@ namespace ProjectX.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Register(UserRegisterModel userRegisterModel)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View();
+        [HttpPost]
+        public ActionResult Register(UserRegisterModel userRegisterModel)
+        {
+            if (!ModelState.IsValid)
+                return View();
 
 
-        //    var salt = HelperService.GenerateSalt(userRegisterModel.UserName);
+            var salt = HelperService.GenerateSalt(userRegisterModel.UserName);
 
-        //    var id = _userRepository.Add(new User
-        //           {
-        //               UserName = userRegisterModel.UserName,
-        //               FirstName = userRegisterModel.FirstName,
-        //               LastName = userRegisterModel.LastName,
-        //               Email = userRegisterModel.Email,
-        //               GravatarEmail = userRegisterModel.GravatarEmail ?? userRegisterModel.Email,
-        //               Password = HelperService.GenerateHash(salt, userRegisterModel.Password),
-        //               Salt = salt,
-        //               GitHub = userRegisterModel.GitHubUserName,
-        //               Created = DateTime.Now,
-        //               Role = userRegisterModel.Role,
-        //               DisplayEmail = userRegisterModel.DisplayEmail,
-        //               Description = string.Empty,
-        //               DisplayName = string.Concat(userRegisterModel.FirstName, " ", userRegisterModel.LastName)
-        //           });
+            var id = _dataRepository.Save<User>(new User
+            {
+                UserName = userRegisterModel.UserName,
+                FirstName = userRegisterModel.FirstName,
+                LastName = userRegisterModel.LastName,
+                Email = userRegisterModel.Email,
+                GravatarEmail = userRegisterModel.GravatarEmail ?? userRegisterModel.Email,
+                Password = HelperService.GenerateHash(salt, userRegisterModel.Password),
+                Salt = salt,
+                GitHub = userRegisterModel.GitHubUserName,
+                Created = DateTime.Now,
+                Role = userRegisterModel.Role,
+                DisplayEmail = userRegisterModel.DisplayEmail,
+                Description = string.Empty,
+            });
 
 
-        //    return View();
-        //}
+
+            return View();
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace ProjectX.Model.Mappings
             Map(x => x.Role);
             Map(x => x.Salt);
             Map(x => x.UserName);
+            Map(x => x.DisplayName);
         }
     }
 }

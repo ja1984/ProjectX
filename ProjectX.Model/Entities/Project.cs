@@ -12,18 +12,17 @@ namespace ProjectX.Model.Entities
         {
             Images = new List<Image>();
             Collaborators = new List<Collaborator>();
-            Openings = new List<Opening>();
+           // Openings = new List<Opening>();
         }
 
         public virtual string Name { get; set; }
         public virtual DateTime Created { get; set; }
         public virtual string Description { get; set; }
-        public virtual int CreatorId { get; set; }
-        public virtual User Creator { get; set; }
+        public virtual User User { get; set; }
         public virtual string GitHubName { get; set; }
         public virtual IList<Image> Images { get; set; }
         public virtual IList<Collaborator> Collaborators { get; set; }
-        public virtual IList<Opening> Openings { get; set; }
+        //public virtual IList<Opening> Openings { get; set; }
     }
 
     //public class ProjectRegisterModel

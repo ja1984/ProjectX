@@ -76,17 +76,23 @@
     <Compile Include="Interfaces\IDataRepository.cs" />
     <Compile Include="Interfaces\IReadOnlyRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Mappings\CollaboratorMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
+    <Compile Include="Mappings\ImageMap.cs" />
+    <Compile Include="Mappings\ProjectMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
+    <Compile Include="Nhibernate\Conventions.cs" />
+    <Compile Include="Nhibernate\IUnitOfWork.cs" />
+    <Compile Include="Nhibernate\NhibernateHelper.cs" />
+    <Compile Include="Nhibernate\SpotQuizModelInspector.cs" />
+    <Compile Include="Nhibernate\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NHibernateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Nhibernate\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
