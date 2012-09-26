@@ -11,7 +11,7 @@ namespace ProjectX.Model.Mappings
         public ProjectMap()
         {
             Map(x => x.Created);
-            Map(x => x.Description);
+            Map(x => x.Description).Length(4001);
             Map(x => x.Name);
             Map(x => x.GitHubName);
 

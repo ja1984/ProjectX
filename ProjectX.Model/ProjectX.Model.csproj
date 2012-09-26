@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Entities\Application.cs" />
     <Compile Include="Entities\Collaborator.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Image.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Interfaces\IDataRepository.cs" />
     <Compile Include="Interfaces\IReadOnlyRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Mappings\ApplicationMap.cs" />
     <Compile Include="Mappings\CollaboratorMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\ImageMap.cs" />

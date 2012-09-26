@@ -5,7 +5,7 @@
 <div class="span8 left">
     <h2>@Model.Name</h2>
     <!-- start slipsum code -->
-    @Html.Raw(Model.Description)
+    @Html.Raw(Model.Description.Replace("\n","<br />"))
     <!-- please do not remove this line -->
     <div style="display: none;">
         <a href="http://slipsum.com">lorem ipsum</a>
@@ -48,9 +48,9 @@
             Helpers</h4>
         <ul class="unstyled" style="margin-left: 10px;">
         <li><i class="icon-star"></i> @Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
-            @foreach (var spot in Model.Openings)
+            @foreach (var spot in Model.Openings.OrderBy(x=>x.Role))
             {
-                <li>@spot.Role</li>
+                <li>@spot.GetRole(spot.Role)</li>
             }
         </ul>
         @if (Model.Openings.Any())

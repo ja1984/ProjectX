@@ -6,13 +6,15 @@ using ProjectX.Model.Entities;
 
 namespace ProjectX.Model.Mappings
 {
-    class OpeningMap : EntityMap<Opening>
+    class ApplicationMap : EntityMap<Application>
     {
-
-        public OpeningMap()
+        public ApplicationMap()
         {
+            Map(x => x.Sent);
             Map(x => x.Role);
+            Map(x => x.Message).Length(4001);
             References(x => x.Project);
+            References(x => x.User);
         }
 
     }

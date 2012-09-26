@@ -11,7 +11,7 @@ namespace ProjectX.Model.Mappings
         public UserMap()
         {
             Map(x => x.Created);
-            Map(x => x.Description);
+            Map(x => x.Description).Length(4001);
             Map(x => x.DisplayEmail);
             Map(x => x.Email);
             Map(x => x.FirstName);

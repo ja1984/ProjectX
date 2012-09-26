@@ -134,6 +134,7 @@ namespace ProjectX.Controllers
                 Role = userRegisterModel.Role,
                 DisplayEmail = userRegisterModel.DisplayEmail,
                 Description = string.Empty,
+                DisplayName = string.Concat(userRegisterModel.FirstName," ",userRegisterModel.LastName)
             });
 
 
