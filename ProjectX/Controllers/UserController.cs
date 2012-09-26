@@ -30,9 +30,11 @@ namespace ProjectX.Controllers
             var userId = int.Parse(User.Identity.Name);
             var user = _dataRepository.Get<User>(userId);
             var myProjects = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).Count();
+            var myPrivateMessages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId && !x.IsRead).Count();
 
+            var totalNotifications = myPrivateMessages + myProjects;
 
-            return PartialView(new UserBarViewModel { ApplicationNotifications = myProjects, User = new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail } });
+            return PartialView(new UserBarViewModel { TotalNotifications = totalNotifications, ApplicationNotifications = myProjects, MessagesNotifications = myPrivateMessages, User = new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail } });
         }
 
         public ActionResult Index()
@@ -109,6 +111,28 @@ namespace ProjectX.Controllers
             return View(userViewModel);
         }
 
+
+        public ActionResult Messages()
+        {
+            var userId = int.Parse(User.Identity.Name);
+            var messages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId).ToList();
+
+            return View(messages);
+        }
+
+
+        public JsonResult GetMessage(int messageId)
+        {
+            var message = _dataRepository.Get<PrivateMessage>(messageId);
+
+            if (!message.IsRead)
+            {
+                message.IsRead = true;
+                _dataRepository.Update<PrivateMessage>(message);
+            }
+
+            return Json(new { Header = message.Header, Sent = message.Sent.ToString(), Message = message.Message });
+        }
 
         public ActionResult Register()
         {

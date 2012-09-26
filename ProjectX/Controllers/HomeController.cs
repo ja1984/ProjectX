@@ -23,6 +23,25 @@ namespace ProjectX.Controllers
 
         public ActionResult Index()
         {
+
+            //var userId = int.Parse(User.Identity.Name);
+            //var sender = _dataRepository.Get<User>(userId);
+            //var reciever = _dataRepository.Get<User>(102);
+
+            //var pm = new PrivateMessage
+            //{
+
+            //    Header = "test",
+            //    Message = "Hejsan hoppsan",
+            //    IsRead = false,
+            //    Sent = DateTime.Now,
+            //    Sender = reciever,
+            //    Reciever = sender
+            //};
+
+            //_dataRepository.Save<PrivateMessage>(pm);
+
+
             return View();
         }
 

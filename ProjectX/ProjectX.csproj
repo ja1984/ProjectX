@@ -282,6 +282,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\User\UserBar.cshtml" />
+    <Content Include="Views\User\Messages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">

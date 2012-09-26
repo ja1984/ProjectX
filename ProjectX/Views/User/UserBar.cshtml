@@ -2,13 +2,12 @@
 <li class="divider-vertical"></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
     <img src="@Html.Raw(Model.User.Image(ProjectX.Models.ProfileImageSize.Small))" class="img-polaroid" />
-    @Model.User.DisplayName <span class="badge badge-important">4</span></a>
+    @Model.User.DisplayName @if (@Model.TotalNotifications > 0) {<span class="badge badge-important">@Model.TotalNotifications</span>}</a>
     <ul class="dropdown-menu">
         <li><a href="#">Profile</a></li>
         <li class="divider"></li>
-        <li class="clearfix"><a href="#">Notifications <span class="badge badge-important pull-right">
-            @Model.ApplicationNotifications</span></a></li>
-        <li><a href="#">Messages <span class="badge badge-important pull-right">2</span></a></li>
+        <li class="clearfix"><a href="#">Notifications @if (@Model.ApplicationNotifications > 0) {<span id="projectNotificationCounter" class="badge badge-important">@Model.ApplicationNotifications</span>}</a></li>
+        <li><a href="/user/messages">Messages @if (@Model.MessagesNotifications > 0) {<span id="messageNotificationCounter" class="badge badge-important">@Model.MessagesNotifications</span>}</a></li>
         <li class="divider"></li>
         <li><a href="/user/logout">Sign off</a></li>
     </ul>

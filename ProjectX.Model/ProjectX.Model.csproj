@@ -69,9 +69,11 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Entities\Application.cs" />
     <Compile Include="Entities\Collaborator.cs" />
+    <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Opening.cs" />
+    <Compile Include="Entities\PrivateMessage.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IDataRepository.cs" />
@@ -79,9 +81,11 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Mappings\ApplicationMap.cs" />
     <Compile Include="Mappings\CollaboratorMap.cs" />
+    <Compile Include="Mappings\CommentMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\ImageMap.cs" />
     <Compile Include="Mappings\OpeningMap.cs" />
+    <Compile Include="Mappings\PrivateMessageMap.cs" />
     <Compile Include="Mappings\ProjectMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Nhibernate\Conventions.cs" />

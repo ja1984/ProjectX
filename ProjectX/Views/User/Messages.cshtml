@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectX.Model.Entities.PrivateMessage>
+@{
+    ViewBag.Title = "Messages";
+}
+<div class="span8 left">
+    <h2 id="messageHeader">
+        Rubrik på meddelande</h2>
+    <p id="messageText">
+        Detta är texten!
+    </p>
+    <p id="messageSent">
+    </p>
+</div>
+<div class="span4 right">
+    <ul class="messages">
+        @foreach (var item in Model)
+        {
+            <li class="message @(item.IsRead ? "read" : "unread")" data-id="@item.Id">
+                <p class="header">@item.Header</p>
+                <p class="information">@item.Sent - @Html.ActionLink(@item.Sender.DisplayName, "details", "user", new { id = item.Sender.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(item.Sender.UserName) }, new { })</p>
+            </li>
+        }
+    </ul>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(".message").click(function () {
+                var me = $(this);
+                var messageId = me.data("id");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/GetMessage',
+                    data: { 'messageId': messageId },
+                    dataType: 'json',
+                    success: function (response) {
+                        $(".message").removeClass('active');
+                        me.removeClass('unread');
+                        me.addClass('active');
+                        $("#messageHeader").text(response.Header);
+                        $("#messageText").text(response.Message);
+                        $("#messageSent").text(response.Sent);
+
+
+                        var counter = $("#messageNotificationCounter");
+
+                        var count = counter.text();
+
+                        counter.text(count - 1);
+
+
+                    }
+                });
+            });
+        });
+    </script>
+}

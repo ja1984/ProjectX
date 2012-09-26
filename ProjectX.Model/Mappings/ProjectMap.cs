@@ -19,6 +19,7 @@ namespace ProjectX.Model.Mappings
             HasMany(x => x.Images);
             HasMany(x => x.Openings).Cascade.All();
             HasMany(x => x.Applications).Cascade.All();
+            HasMany(x => x.Comments).Cascade.All();
             HasManyToMany(x => x.Collaborators).Cascade.All();
         }
     }
