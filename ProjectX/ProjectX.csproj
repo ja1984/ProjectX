@@ -136,6 +136,7 @@
     <Compile Include="Helpers\MemberHelper.cs" />
     <Compile Include="Models\ConfigSettings.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\UserBarViewModel.cs" />
     <Compile Include="Models\UserRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

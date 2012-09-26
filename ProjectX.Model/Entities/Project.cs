@@ -12,7 +12,7 @@ namespace ProjectX.Model.Entities
         {
             Images = new List<Image>();
             Collaborators = new List<Collaborator>();
-           // Openings = new List<Opening>();
+            Openings = new List<Opening>();
         }
 
         public virtual string Name { get; set; }
@@ -23,6 +23,7 @@ namespace ProjectX.Model.Entities
         public virtual IList<Image> Images { get; set; }
         public virtual IList<Collaborator> Collaborators { get; set; }
         public virtual IList<Opening> Openings { get; set; }
+        public virtual IList<Application> Applications { get; set; }
     }
 
 

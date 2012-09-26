@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectX.Model.Entities
 {
-    class Application : Entity
+    public class Application : Entity
     {
 
         public virtual User User { get; set; }

@@ -27,8 +27,12 @@ namespace ProjectX.Controllers
         [ChildActionOnly]
         public PartialViewResult UserBar()
         {
-            var user = _dataRepository.Get<User>(int.Parse(User.Identity.Name));
-            return PartialView(new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail  });
+            var userId = int.Parse(User.Identity.Name);
+            var user = _dataRepository.Get<User>(userId);
+            var myProjects = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).Count();
+
+
+            return PartialView(new UserBarViewModel { ApplicationNotifications = myProjects, User = new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail } });
         }
 
         public ActionResult Index()
@@ -134,7 +138,7 @@ namespace ProjectX.Controllers
                 Role = userRegisterModel.Role,
                 DisplayEmail = userRegisterModel.DisplayEmail,
                 Description = string.Empty,
-                DisplayName = string.Concat(userRegisterModel.FirstName," ",userRegisterModel.LastName)
+                DisplayName = string.Concat(userRegisterModel.FirstName, " ", userRegisterModel.LastName)
             });
 
 

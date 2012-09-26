@@ -18,6 +18,7 @@ namespace ProjectX.Model.Mappings
             References(x => x.User);
             HasMany(x => x.Images);
             HasMany(x => x.Openings).Cascade.All();
+            HasMany(x => x.Applications).Cascade.All();
             HasManyToMany(x => x.Collaborators).Cascade.All();
         }
     }
