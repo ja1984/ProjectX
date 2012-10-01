@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <article class="container dropshadow">
+        <article class="container dropshadow" id="content">
             <div class="row-fluid">
                 @RenderBody()
             </div>
@@ -60,6 +60,22 @@
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="/Scripts/jquery.fancybox.js?v=2.1.0" type="text/javascript"></script>
+    @if (!string.IsNullOrEmpty(User.Identity.Name))
+    { 
+        <script src="/Scripts/notificationcenter.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            var config = {
+                messageNotifications: $("#messageNotificationCounter"),
+                projectNotifications: $("#projectNotificationCounter"),
+                totalNotifications: $("#totalNotificationCounter")
+            };
+            var model = new loggedInModel().viewModel(config);
+            $(function () {
+                ko.applyBindings(model, document.getElementById("notificationCenter"));
+            });
+        </script>
+    }
     @RenderSection("scripts", required: false)
 </body>
 </html>

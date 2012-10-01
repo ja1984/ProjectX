@@ -48,8 +48,6 @@
             $.each(inner.helpers(), function () {
                 helpers += this.role + ",";
             });
-
-            console.log(inner.helpers());
             return helpers;
         });
 

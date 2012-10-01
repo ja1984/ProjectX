@@ -81,13 +81,13 @@
 
         $(function () {
 
-            var test = new createModel().viewModel()
-            ko.applyBindings(test);
+            var projectModel = new createModel().viewModel()
+            ko.applyBindings(projectModel, document.getElementById("content"));
 
 
-            $("#submit").click(function () {              
-                console.log(test.getHelpers());
-            });
+//            $("#submit").click(function () {              
+//                console.log(test.getHelpers());
+//            });
 
             $("#toggleInfo").click(function () {
                 $(".alert").toggle();

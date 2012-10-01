@@ -1,13 +1,17 @@
 ﻿@model ProjectX.Models.UserBarViewModel
 <li class="divider-vertical"></li>
-<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<li class="dropdown" id="notificationCenter"><a href="#" class="dropdown-toggle"
+    data-toggle="dropdown">
     <img src="@Html.Raw(Model.User.Image(ProjectX.Models.ProfileImageSize.Small))" class="img-polaroid" />
-    @Model.User.DisplayName @if (@Model.TotalNotifications > 0) {<span class="badge badge-important">@Model.TotalNotifications</span>}</a>
+    @Model.User.DisplayName <span id="totalNotificationCounter" class="badge badge-important"
+        data-bind="visible: totalNotifications() > 0, text: totalNotifications()">@Model.TotalNotifications</span></a>
     <ul class="dropdown-menu">
         <li><a href="#">Profile</a></li>
         <li class="divider"></li>
-        <li class="clearfix"><a href="#">Notifications @if (@Model.ApplicationNotifications > 0) {<span id="projectNotificationCounter" class="badge badge-important">@Model.ApplicationNotifications</span>}</a></li>
-        <li><a href="/user/messages">Messages @if (@Model.MessagesNotifications > 0) {<span id="messageNotificationCounter" class="badge badge-important">@Model.MessagesNotifications</span>}</a></li>
+        <li class="clearfix"><a href="/application">Notifications <span id="projectNotificationCounter"
+            class="badge badge-important" data-bind="visible: projectNotifications() > 0, text: projectNotifications()">@Model.ApplicationNotifications</span></a></li>
+        <li><a href="/user/messages">Messages <span id="messageNotificationCounter" class="badge badge-important"
+            data-bind="visible: messageNotifications() > 0, text: messageNotifications()">@Model.MessagesNotifications</span></a></li>
         <li class="divider"></li>
         <li><a href="/user/logout">Sign off</a></li>
     </ul>

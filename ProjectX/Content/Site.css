@@ -209,6 +209,11 @@ ul.messages li p.information
     font-weight: bold;
 }
 
+.all 
+{
+    padding: 10px;
+}
+
 .big
 {
     width: 590px;

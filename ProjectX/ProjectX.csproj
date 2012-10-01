@@ -126,7 +126,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\applicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +253,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\notificationcenter.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Screenshot_2012-08-29-09-13-02.png" />
     <Content Include="Uploads\Screenshot_2012-08-29-09-13-09.png" />
@@ -283,6 +286,8 @@
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\User\UserBar.cshtml" />
     <Content Include="Views\User\Messages.cshtml" />
+    <Content Include="Views\Application\Index.cshtml" />
+    <Content Include="Views\Application\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">

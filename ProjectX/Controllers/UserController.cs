@@ -116,23 +116,28 @@ namespace ProjectX.Controllers
         {
             var userId = int.Parse(User.Identity.Name);
             var messages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId).ToList();
-
             return View(messages);
         }
 
 
-        public JsonResult GetMessage(int messageId)
+        public JsonResult GetMessages()
         {
-            var message = _dataRepository.Get<PrivateMessage>(messageId);
-
-            if (!message.IsRead)
-            {
-                message.IsRead = true;
-                _dataRepository.Update<PrivateMessage>(message);
-            }
-
-            return Json(new { Header = message.Header, Sent = message.Sent.ToString(), Message = message.Message });
+            var userId = int.Parse(User.Identity.Name);
+            var messages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId).ToList();
+            return Json(messages.Select(x => new { Id = x.Id, Header = x.Header, Message = x.Message, isRead = x.IsRead, Sent = x.Sent.ToShortDateString(), Sender = new { Id = x.Sender.Id, DisplayName = x.Sender.DisplayName } }));
         }
+
+
+        public JsonResult GetNotifications()
+        {
+            var userId = int.Parse(User.Identity.Name);
+            var user = _dataRepository.Get<User>(userId);
+            var projectNotifications = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).Count();
+            var privateMessages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId && !x.IsRead).Count();
+
+            return Json(new { MessageNotifications = privateMessages, ProjectNotifications = projectNotifications });
+        }
+
 
         public ActionResult Register()
         {

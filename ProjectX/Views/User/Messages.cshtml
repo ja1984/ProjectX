@@ -3,56 +3,119 @@
     ViewBag.Title = "Messages";
 }
 <div class="span8 left">
-    <h2 id="messageHeader">
+    <!--ko with: selectedMessage()-->
+    <h2 id="messageHeader" data-bind="text: header">
         Rubrik på meddelande</h2>
-    <p id="messageText">
+    <p id="messageText" data-bind="text: message">
         Detta är texten!
     </p>
     <p id="messageSent">
     </p>
+    <!-- /ko -->
 </div>
 <div class="span4 right">
-    <ul class="messages">
-        @foreach (var item in Model)
-        {
-            <li class="message @(item.IsRead ? "read" : "unread")" data-id="@item.Id">
-                <p class="header">@item.Header</p>
-                <p class="information">@item.Sent - @Html.ActionLink(@item.Sender.DisplayName, "details", "user", new { id = item.Sender.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(item.Sender.UserName) }, new { })</p>
-            </li>
-        }
+    <ul class="messages" data-bind="foreach: messages()">
+        <li class="message" data-bind="css : {'unread': !isRead()}, click: readMessage">
+            <p class="header" data-bind="text: header">
+            </p>
+            <p class="information">
+                <span data-bind="text: sent"></span>
+            </p>
+            @*<p class="information">@item.Sent - @Html.ActionLink(@item.Sender.DisplayName, "details", "user", new { id = item.Sender.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(item.Sender.UserName) }, new { })</p>*@
+        </li>
     </ul>
 </div>
 @section scripts{
     <script type="text/javascript">
-        $(function () {
-            $(".message").click(function () {
-                var me = $(this);
-                var messageId = me.data("id");
+        var messageModel = function () {
+            var priv = {};
+            var pub = {};
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/user/GetMessage',
-                    data: { 'messageId': messageId },
-                    dataType: 'json',
-                    success: function (response) {
-                        $(".message").removeClass('active');
-                        me.removeClass('unread');
-                        me.addClass('active');
-                        $("#messageHeader").text(response.Header);
-                        $("#messageText").text(response.Message);
-                        $("#messageSent").text(response.Sent);
+            priv.Message = function (item, viewModel) {
+                var inner = {};
+                inner.id = item.Id;
+                inner.header = item.Header;
+                inner.message = item.Message;
+                inner.sent = item.Sent;
+                inner.isRead = ko.observable(item.isRead);
+                inner.sender = item.Sender;
 
+                inner.readMessage = function () {
+                    viewModel.selectedMessage(this);
 
-                        var counter = $("#messageNotificationCounter");
-
-                        var count = counter.text();
-
-                        counter.text(count - 1);
-
-
+                    if (!inner.isRead()) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/message/MarkAsRead',
+                            data: { 'messageId': inner.id },
+                            dataType: 'json',
+                            success: function (response) {
+                                inner.isRead(true);
+                                model.updateNotifications();
+                            }
+                        });
                     }
-                });
-            });
+
+                };
+
+                return inner;
+            };
+
+            pub.viewModel = function () {
+                var inner = {};
+
+                inner.messages = ko.observableArray();
+                inner.selectedMessage = ko.observable();
+
+                inner.init = function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/user/GetMessages',
+                        data: {},
+                        dataType: 'json',
+                        success: function (response) {
+                            $.each(response, function () {
+                                inner.messages.push(new priv.Message(this, inner));
+                            });
+
+                        }
+                    });
+                };
+
+                inner.init();
+
+                return inner;
+            };
+            return pub;
+
+        };
+
+
+
+
+
+        $(function () {
+
+            ko.applyBindings(new messageModel().viewModel(), document.getElementById("content"));
+            //            $(".message").click(function () {
+            //                var me = $(this);
+            //                var messageId = me.data("id");
+
+            //                $.ajax({
+            //                    type: 'POST',
+            //                    url: '/user/GetMessage',
+            //                    data: { 'messageId': messageId },
+            //                    dataType: 'json',
+            //                    success: function (response) {
+            //                        $(".message").removeClass('active');
+            //                        me.addClass('active');
+            //                        if (me.hasClass("unread")) {
+            //                            me.removeClass('unread');
+            //                            model.updateNotifications();
+            //                        }
+            //                    }
+            //                });
+            //            });
         });
     </script>
 }
