@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjectX.Model.Entities.Application>
+@{
+    ViewBag.Title = "Applications";
+}
+<div class="span12 all">
+    <h2>
+        Applications</h2>
+    <div class="applicationrow">
+    </div>
+    <table class="table table-stripe">
+        <tr>
+            <th>
+                User
+            </th>
+            <th>
+                Project
+            </th>
+            <th>
+                Sent
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p>
+                        @Html.ActionLink(@item.User.DisplayName, "details", "user", new { id = item.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(item.User.UserName) }, new { })
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        @item.Project.Name
+                    </p>
+                </td>
+                <td>
+                    @item.Sent
+                </td>
+                <td style="width: 135px;">
+                @Html.ActionLink("View application", "details", "application", new { id = item.Id }, new { @class = "btn" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -85,6 +85,12 @@ namespace ProjectX.Helpers
             return FormsAuthentication.HashPasswordForStoringInConfigFile(string.Concat(salt, password), "SHA1");
         }
 
+        public static string GetRole(int roleId)
+        {
+            string[] roles = new string[] { "Web Developer", "Web Designer", "Tester" };
+
+            return roles[roleId];
+        }
 
     }
 }
