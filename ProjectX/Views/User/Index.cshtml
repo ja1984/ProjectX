@@ -1,16 +1,43 @@
-﻿@{
+﻿@model IEnumerable<ProjectX.Model.Entities.User>
+@{
     ViewBag.Title = "Index";
 }
 
 <div class="span8 left">
 <h2>Test</h2>
 <div class="row-fluid">
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
-    <div class="span4"><img src="http://placehold.it/180x180" class="img-polaroid"></div>
+
+@foreach (var user in Model.Take(3))        {
+        <div class="span4">
+        <img src="@Html.Raw(ProjectX.Helpers.HelperService.GetGravatar(user.GravatarEmail,ProjectX.Models.ProfileImageSize.Search))" class="img-polaroid">
+               @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { }) 
+        </div>        
+        }
+
 </div>
 <div>
-LIISTAAA
+<table class="table table-striped" style="margin-top: 25px;">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th style="width: 100px;">
+                    Role
+                </th>
+            </tr>
+        </thead>
+        @foreach (var user in Model.Skip(3))
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { })
+                </td>
+                <td>@ProjectX.Helpers.HelperService.GetRole(@user.Role)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 </div>
 
