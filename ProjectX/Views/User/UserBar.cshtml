@@ -6,7 +6,7 @@
     @Model.User.DisplayName <span id="totalNotificationCounter" class="badge badge-important"
         data-bind="visible: totalNotifications() > 0, text: totalNotifications()">@Model.TotalNotifications</span></a>
     <ul class="dropdown-menu">
-        <li><a href="#">Profile</a></li>
+        <li>@Html.ActionLink("Profile", "Details", new { id = User.Identity.Name })</li>
         <li class="divider"></li>
         <li class="clearfix"><a href="/application">Applications <span id="projectNotificationCounter"
             class="badge badge-important" data-bind="visible: projectNotifications() > 0, text: projectNotifications()">@Model.ApplicationNotifications</span></a></li>
