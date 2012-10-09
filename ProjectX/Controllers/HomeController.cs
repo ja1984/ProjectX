@@ -16,6 +16,12 @@ namespace ProjectX.Controllers
 
         private readonly IDataRepository _dataRepository;
 
+        public HomeController()
+        {
+
+        }
+
+
         public HomeController(IDataRepository dataRepository)
         {
             _dataRepository = dataRepository;

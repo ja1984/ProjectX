@@ -19,8 +19,9 @@
                 data: {},
                 dataType: 'json',
                 success: function (response) {
+                    console.log(response);
                     inner.messageNotifications(response.MessageNotifications);
-                    inner.projectNotifications(response.ProjectNotifications);
+                    inner.projectNotifications(response.ApplicationNotifications);
                 }
             });
         };

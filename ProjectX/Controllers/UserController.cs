@@ -16,6 +16,11 @@ namespace ProjectX.Controllers
 
         private readonly IDataRepository _dataRepository;
 
+        public UserController()
+        {
+
+        }
+
         public UserController(IDataRepository dataRepository)
         {
             _dataRepository = dataRepository;
@@ -29,12 +34,12 @@ namespace ProjectX.Controllers
         {
             var userId = int.Parse(User.Identity.Name);
             var user = _dataRepository.Get<User>(userId);
-            var myProjects = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).Count();
+            var myApplications = _dataRepository.FilterBy<Application>(x => x.User.Id == userId).Count();
             var myPrivateMessages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId && !x.IsRead).Count();
 
-            var totalNotifications = myPrivateMessages + myProjects;
+            var totalNotifications = myPrivateMessages + myApplications;
 
-            return PartialView(new UserBarViewModel { TotalNotifications = totalNotifications, ApplicationNotifications = myProjects, MessagesNotifications = myPrivateMessages, User = new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail } });
+            return PartialView(new UserBarViewModel { TotalNotifications = totalNotifications, ApplicationNotifications = myApplications, MessagesNotifications = myPrivateMessages, User = new UserViewModel { DisplayName = user.DisplayName, GravatarEmail = user.GravatarEmail } });
         }
 
         public ActionResult Index()
@@ -132,10 +137,10 @@ namespace ProjectX.Controllers
         {
             var userId = int.Parse(User.Identity.Name);
             var user = _dataRepository.Get<User>(userId);
-            var projectNotifications = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).Count();
+            var ApplicationNotifications = _dataRepository.FilterBy<Application>(x => x.User.Id == userId).Count();
             var privateMessages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId && !x.IsRead).Count();
 
-            return Json(new { MessageNotifications = privateMessages, ProjectNotifications = projectNotifications });
+            return Json(new { MessageNotifications = privateMessages, ApplicationNotifications = ApplicationNotifications });
         }
 
 
