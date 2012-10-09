@@ -137,7 +137,8 @@ namespace ProjectX.Controllers
         {
             var userId = int.Parse(User.Identity.Name);
             var user = _dataRepository.Get<User>(userId);
-            var ApplicationNotifications = _dataRepository.FilterBy<Application>(x => x.User.Id == userId).Count();
+            var projets = _dataRepository.FilterBy<Project>(x => x.User.Id == userId).ToList();
+            var ApplicationNotifications = projets.SelectMany(x => x.Applications).Count();
             var privateMessages = _dataRepository.FilterBy<PrivateMessage>(x => x.Reciever.Id == userId && !x.IsRead).Count();
 
             return Json(new { MessageNotifications = privateMessages, ApplicationNotifications = ApplicationNotifications });
