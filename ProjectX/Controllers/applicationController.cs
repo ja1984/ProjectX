@@ -62,5 +62,16 @@ namespace ProjectX.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult DenyApplication(int id)
+        {
+            var application = _dataRepository.Get<Application>(id);
+
+            var denyPM = new PrivateMessage { Header = string.Format("Application for {0} denied", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("Your application for this project has been denied.", application.Project.Name) };
+
+            _dataRepository.Delete<Application>(application);
+            _dataRepository.Save<PrivateMessage>(denyPM);
+            return RedirectToAction("Index");
+        }
+
     }
 }
