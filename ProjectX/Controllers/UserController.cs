@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,9 @@ using ProjectX.Helpers;
 using System.Web.Security;
 using ProjectX.Model.Interfaces;
 using ProjectX.Model.Entities;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Net;
 
 namespace ProjectX.Controllers
 {
@@ -179,6 +183,42 @@ namespace ProjectX.Controllers
 
 
             return View();
+        }
+
+        
+        public ActionResult createPDF(int id)
+        {
+            User u = _dataRepository.Get<User>(id);
+            var doc1 = new Document();
+            //use a variable to let my code fit across the page...
+            string path = Server.MapPath("/PDFs");
+            PdfWriter.GetInstance(doc1, new FileStream(path + string.Format("/{0}.pdf",u.UserName), FileMode.Create));
+
+            
+            var client = new WebClient();
+
+            doc1.Open();
+            doc1.AddAuthor(u.DisplayName);
+
+
+            iTextSharp.text.Image png = iTextSharp.text.Image.GetInstance(client.DownloadData(HelperService.GetGravatar(u.GravatarEmail, ProfileImageSize.Application)));
+            Paragraph paragraph = new Paragraph(@"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse blandit blandit turpis. Nam in lectus ut dolor consectetuer bibendum. Morbi neque ipsum, laoreet id; dignissim et, viverra id, mauris. Nulla mauris elit, consectetuer sit amet, accumsan eget, congue ac, libero. Vivamus suscipit. Nunc dignissim consectetuer lectus. Fusce elit nisi; commodo non, facilisis quis, hendrerit eu, dolor? Suspendisse eleifend nisi ut magna. Phasellus id lectus! Vivamus laoreet enim et dolor. Integer arcu mauris, ultricies vel, porta quis, venenatis at, libero. Donec nibh est, adipiscing et, ullamcorper vitae, placerat at, diam. Integer ac turpis vel ligula rutrum auctor! Morbi egestas erat sit amet diam. Ut ut ipsum? Aliquam non sem. Nulla risus eros, mollis quis, blandit ut; luctus eget, urna. Vestibulum vestibulum dapibus erat. Proin egestas leo a metus?");
+            paragraph.Alignment = Element.ALIGN_JUSTIFIED;
+
+            png.Alignment = iTextSharp.text.Image.TEXTWRAP | iTextSharp.text.Image.ALIGN_RIGHT;
+            png.IndentationLeft = 9f;
+            png.SpacingAfter = 9f;
+            
+            
+            doc1.Add(png);
+            doc1.Add(paragraph);
+
+
+
+            doc1.Close();
+
+
+            return RedirectToAction("Index");
         }
     }
 }

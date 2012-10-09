@@ -47,7 +47,7 @@
         @if (int.Parse(User.Identity.Name) == Model.Id)
         {
         @Html.ActionLink("Manage", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block" });
-        @Html.ActionLink("Create resumé", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style = "float:right;" });
+        @Html.ActionLink("Create resumé", "createPDF", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style = "float:right;" });
         }
     </div>
     <div class="row-fluid box personal-information">

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ProjectX.Model.Interfaces;
 using ProjectX.Model.Entities;
 
+
 namespace ProjectX.Controllers
 {
     public class HomeController : Controller
@@ -18,7 +19,7 @@ namespace ProjectX.Controllers
 
         public HomeController()
         {
-
+            
         }
 
 

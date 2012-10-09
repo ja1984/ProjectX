@@ -70,6 +70,7 @@ namespace ProjectX.Models
         Normal = 40,
         Large = 80,
         Search = 180,
+        Application = 128,
         Extreme = 280
     }
 
