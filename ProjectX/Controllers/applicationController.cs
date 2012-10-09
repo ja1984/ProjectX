@@ -43,5 +43,24 @@ namespace ProjectX.Controllers
             return View(new ApplicationViewModel { Application = application, Projects = projects });
         }
 
+        public ActionResult AcceptApplication(int id)
+        {
+            var application = _dataRepository.Get<Application>(id);
+
+            var project = _dataRepository.Get<Project>(application.Project.Id);
+
+            project.Collaborators.Add(new Collaborator { User = application.User, Role = (Role)application.Role });
+            var OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role == application.Role).First();
+
+            project.Openings.Remove((Opening)OpeningToDelete);
+
+            var AcceptPm = new PrivateMessage { Header = string.Format("Application for {0} accepted", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("You are now a part of the {0} project, good luck", application.Project.Name ) };
+            _dataRepository.Save<PrivateMessage>(AcceptPm);
+            _dataRepository.Update<Project>(application.Project);
+            _dataRepository.Delete<Application>(application);
+
+            return View();
+        }
+
     }
 }

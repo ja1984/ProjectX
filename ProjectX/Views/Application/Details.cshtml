@@ -35,9 +35,8 @@
         </div>
     </fieldset>
     <p>
-        <button class="btn btn-large btn-success">
-            Accept</button>
-        <button class="btn btn-large btn-danger">
-            Decline</button>
+        @Html.ActionLink("Accept", "AcceptApplication", new { id = Model.Application.Id })
+        @Html.ActionLink("Deny", "DenyApplication", new { id = Model.Application.Id })
+
     </p>
 </div>
