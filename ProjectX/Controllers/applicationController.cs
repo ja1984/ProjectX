@@ -59,7 +59,7 @@ namespace ProjectX.Controllers
             _dataRepository.Update<Project>(application.Project);
             _dataRepository.Delete<Application>(application);
 
-            return View();
+            return RedirectToAction("Index");
         }
 
     }
