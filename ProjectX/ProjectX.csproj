@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EO.Pdf">
+      <HintPath>..\packages\EO.Pdf.2012.4.0.36.2\lib\EO.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\packages\iTextSharp.5.3.3\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -292,6 +295,7 @@
     <Content Include="Views\User\Messages.cshtml" />
     <Content Include="Views\Application\Index.cshtml" />
     <Content Include="Views\Application\Details.cshtml" />
+    <Content Include="Views\Application\ApplyForOpening.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">
@@ -304,6 +308,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDFs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

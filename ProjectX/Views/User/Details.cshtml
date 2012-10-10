@@ -44,11 +44,16 @@
         <img src="@Html.Raw(ProjectX.Helpers.HelperService.GetGravatar(@Model.GravatarEmail, ProjectX.Models.ProfileImageSize.Extreme))" class="img-polaroid">
     </div>
     <div style="margin-top:5px;">
-        @if (int.Parse(User.Identity.Name) == Model.Id)
+    @if (User.Identity.Name != "")
+    {
+        if (int.Parse(User.Identity.Name) == Model.Id)
         {
-        @Html.ActionLink("Manage", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block" });
-        @Html.ActionLink("Create resumé", "createPDF", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style = "float:right;" });
+        @Html.ActionLink("Manage", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block" });                                                                                                                     
+        var test="http://localhost:12832/";
+        <a href=@string.Format("http://api.joliprint.com/api/rest/url/print/s/foo?url={0}", test+Request.RawUrl) class="btn btn-inverse btn-block">Create resumé</a>
+        //@Html.ActionLink("Create resumé", "createPDF", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style = "float:right;" });
         }
+    }
     </div>
     <div class="row-fluid box personal-information">
         <ul class="unstyled">

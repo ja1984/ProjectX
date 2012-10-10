@@ -73,5 +73,15 @@ namespace ProjectX.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ApplyForOpening(int id)
+        {
+            Project p = _dataRepository.Get<Project>(id);
+
+            ViewBag.Ops = p;
+
+
+            return View();
+        }
+
     }
 }

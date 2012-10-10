@@ -1,0 +1,56 @@
+﻿@model ProjectX.Model.Entities.Application
+
+@{
+    ViewBag.Title = "ApplyForOpening";
+}
+
+<h2>ApplyForOpening</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Application</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Role)
+        </div>
+        <div class="editor-field">
+        <select>
+        @foreach(var opening in ViewBag.Ops.Openings){
+        <option>@opening.GetRole(opening.Role)</option>
+        }
+        </select>
+            @Html.ValidationMessageFor(model => model.Role)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message, new { @class = "big" })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sent)
+            @Html.ValidationMessageFor(model => model.Sent)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
