@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ProjectX.Model.Interfaces;
 using ProjectX.Model.Entities;
 using ProjectX.Models;
+using ProjectX.Helpers;
 
 namespace ProjectX.Controllers
 {
@@ -48,14 +49,15 @@ namespace ProjectX.Controllers
             var application = _dataRepository.Get<Application>(id);
 
             var project = _dataRepository.Get<Project>(application.Project.Id);
-
+            var test = application.Role;
             project.Collaborators.Add(new Collaborator { User = application.User, Role = (Role)application.Role });
-            var OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role == application.Role).First();
-
-            project.Openings.Remove((Opening)OpeningToDelete);
+            Opening OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role == application.Role).First();
+            project.Openings.Remove(OpeningToDelete);
+            //project.Openings.Remove((Opening)OpeningToDelete);
 
             var AcceptPm = new PrivateMessage { Header = string.Format("Application for {0} accepted", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("You are now a part of the {0} project, good luck", application.Project.Name ) };
             _dataRepository.Save<PrivateMessage>(AcceptPm);
+            _dataRepository.Delete<Opening>(OpeningToDelete);
             _dataRepository.Update<Project>(application.Project);
             _dataRepository.Delete<Application>(application);
 
@@ -97,7 +99,9 @@ namespace ProjectX.Controllers
                 
             });
 
-            return View();
+
+
+            return View("../Home/Index");
         }
 
     }
