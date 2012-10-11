@@ -75,10 +75,27 @@ namespace ProjectX.Controllers
 
         public ActionResult ApplyForOpening(int id)
         {
-            Project p = _dataRepository.Get<Project>(id);
+            List<Project> projects = new List<Project>();
+            var project = _dataRepository.Get<Project>(id);
+            projects.Add(project);
+            return View(new ApplicationViewModel { Projects = projects });
+        }
 
-            ViewBag.Ops = p;
+        [HttpPost]
+        public ActionResult ApplyForOpening(Application app, int id)
+        {
 
+            var project = _dataRepository.Get<Project>(id);
+
+            var test = _dataRepository.Save<Application>(new Application
+            {
+                Role = app.Role,
+                User = _dataRepository.Get<User>(int.Parse(User.Identity.Name)),
+                Message = app.Message,
+                Sent = DateTime.Now,
+                Project = project  
+                
+            });
 
             return View();
         }
