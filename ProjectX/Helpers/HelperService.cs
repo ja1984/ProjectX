@@ -70,7 +70,6 @@ namespace ProjectX.Helpers
             return sBuilder.ToString();
         }
 
-
         public static string GenerateSalt(string username)
         {
             string toBeHashed = username.Substring(0, 1);
@@ -90,6 +89,11 @@ namespace ProjectX.Helpers
             string[] roles = new string[] { "Web Developer", "Web Designer", "Tester" };
 
             return roles[roleId];
+        }
+
+        public static HtmlString LinkedImage(string action, string controller, string id, string userName, string email, ProfileImageSize imageSize)
+        {
+            return new HtmlString(string.Format("<a href='/{0}/{1}/{2}'><img src='{3}' alt='{4}' title='{4}' class='img-polaroid' /></a>", controller, id, GenerateSlug(userName), GetGravatar(email, imageSize), userName));
         }
 
     }
