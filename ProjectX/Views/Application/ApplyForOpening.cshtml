@@ -3,45 +3,43 @@
 @{
     ViewBag.Title = "ApplyForOpening";
 }
+<div class="span12 all">
+    <h2>Apply for @Model.Projects.First().Name</h2>
 
-<h2>Apply for @Model.Projects.First().Name</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Application</legend>
-        
+        <fieldset>
+            <legend>Application</legend>
+            <div class="editor-label">
+                <label for="Role">Position of</label>
+            </div>
             <div class="editor-field">
                 <select name="Role">
-                @foreach (var opening in Model.Projects.First().Openings)
-                {
-                    <option value="@opening.Role">@opening.GetRole(opening.Role)</option>
-                }
+                    @foreach (var opening in Model.Projects.First().Openings)
+                    {
+                        <option value="@opening.Role">@opening.GetRole(opening.Role)</option>
+                    }
                 </select>
             </div>
-            <div class="editor-label" style="margin-top:35px;">
+            <div class="editor-label" style="margin-top: 35px;">
                 @Html.LabelFor(model => Model.Application.Message)
             </div>
-             <div class="editor-field">
-                 <textarea class="big" name="Message"></textarea>
-@*                @Html.TextAreaFor(model => Model.Application.Message, new { @class = "big" })
+            <div class="editor-field">
+                <textarea class="big" name="Message"></textarea>
+                @*                @Html.TextAreaFor(model => Model.Application.Message, new { @class = "big" })
                 @Html.ValidationMessageFor(model => Model.Application.Message)*@
             </div>
 
             <input type="hidden" value="@Model.Projects.First().Id" />
 
+                <input type="submit" value="Send my application" class="btn" />
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
+        </fieldset>
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

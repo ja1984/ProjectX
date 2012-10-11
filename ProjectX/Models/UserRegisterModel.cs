@@ -76,7 +76,9 @@ namespace ProjectX.Models
 
     public class UserLoginModel
     {
+        
         [Required]
+        [Display(Name = "Username or Email")]
         public string Username { get; set; }
 
         [Required]

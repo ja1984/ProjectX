@@ -272,7 +272,9 @@
     <Content Include="Uploads\Screenshot_2012-08-29-09-14-27.png" />
     <Content Include="Uploads\Screenshot_2012-08-29-09-14-39.png" />
     <Content Include="Uploads\Screenshot_2012-08-29-09-14-51.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

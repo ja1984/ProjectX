@@ -5,7 +5,7 @@
 <div class="span8 left">
     <h2>@Model.Name</h2>
     <!-- start slipsum code -->
-    @Html.Raw(Model.Description.Replace("\n","<br />"))
+    @Html.Raw(Model.Description.Replace("\n", "<br />"))
     <!-- please do not remove this line -->
     <div style="display: none;">
         <a href="http://slipsum.com">lorem ipsum</a>
@@ -26,10 +26,10 @@
         <img src="http://placehold.it/281x250" class="img-polaroid">
     </div>
     <div>
-@if (Model.User.Id == int.Parse(User.Identity.Name))
-{
-    @Html.ActionLink("Manage project", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style="margin-top:5px;" });
-}
+        @if (!string.IsNullOrEmpty(User.Identity.Name) && Model.User.Id == int.Parse(User.Identity.Name))
+        {
+            @Html.ActionLink("Manage project", "Details", new { id = User.Identity.Name }, new { @class = "btn btn-inverse btn-block", @style = "margin-top:5px;" });
+        }
     </div>
     <div class="row-fluid box">
         <ul class="unstyled">
@@ -37,9 +37,8 @@
             <li>added: @Model.Created</li>
         </ul>
     </div>
-    <div class="row-fluid box github">
-        <h4>
-            On github</h4>
+    <div class="row-fluid box github" id="github">
+        <h4>On github</h4>
         <div style="text-align: center;">
             <img src="/content/images/octocat-spinner-64.gif" data-bind="visible: commits().length < 1" />
         </div>
@@ -50,23 +49,25 @@
         </p>
     </div>
     <div class="row-fluid box">
-        <h4>
-            Helpers</h4>
+        <h4>Collaborators</h4>
         <ul class="unstyled" style="margin-left: 10px;">
-        <li><i class="icon-star"></i> @Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
-            @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x=>x.Role))
+            <li><i class="icon-star"></i>@Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
+
+            @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x => x.Role))
             {
-                <li>@string.Format("{0} - {1}",collaborator.User.DisplayName, collaborator.Role)</li>
+                <li>@string.Format("{0} - {1}", collaborator.User.DisplayName, collaborator.Role)</li>
             }
-            
-            @foreach (var spot in Model.Openings.OrderBy(x=>x.Role))
+        </ul>
+        <h4 style="margin-top: 25px;">Open spots</h4>
+        <ul class="unstyled" style="margin-left: 10px;">
+            @foreach (var spot in Model.Openings.OrderBy(x => x.Role))
             {
                 <li>@spot.GetRole(spot.Role)</li>
             }
         </ul>
         @if (Model.Openings.Any())
         { 
-            @Html.ActionLink("Apply", "../Application/ApplyForOpening", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
+            @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
         }
     </div>
 </div>
@@ -84,7 +85,7 @@
                 repository: '@Model.GitHubName'
             };
 
-            ko.applyBindings(new GitModel().viewModel(config));
+            ko.applyBindings(new GitModel().viewModel(config), document.getElementById("github"));
         });
     </script>
 }
