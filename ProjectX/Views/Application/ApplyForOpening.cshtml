@@ -24,8 +24,9 @@
                 @Html.LabelFor(model => Model.Application.Message)
             </div>
              <div class="editor-field">
-                @Html.TextAreaFor(model => Model.Application.Message, new { @class = "big" })
-                @Html.ValidationMessageFor(model => Model.Application.Message)
+                 <textarea class="big" name="Message"></textarea>
+@*                @Html.TextAreaFor(model => Model.Application.Message, new { @class = "big" })
+                @Html.ValidationMessageFor(model => Model.Application.Message)*@
             </div>
 
             <input type="hidden" value="@Model.Projects.First().Id" />

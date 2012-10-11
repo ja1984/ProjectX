@@ -37,7 +37,6 @@ namespace ProjectX.Controllers
             var projects = new List<Project>();
 
             var userId = application.User.Id;
-
             projects.AddRange(_dataRepository.FilterBy<Project>(x => x.User.Id == userId).ToList());
             projects.AddRange(_dataRepository.FilterBy<Project>(x => x.Collaborators.Where(z => z.User.Id == userId).Any()).ToList());
 
@@ -53,7 +52,7 @@ namespace ProjectX.Controllers
             project.Collaborators.Add(new Collaborator { User = application.User, Role = (Role)application.Role });
             Opening OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role == application.Role).First();
             project.Openings.Remove(OpeningToDelete);
-            //project.Openings.Remove((Opening)OpeningToDelete);
+
 
             var AcceptPm = new PrivateMessage { Header = string.Format("Application for {0} accepted", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("You are now a part of the {0} project, good luck", application.Project.Name ) };
             _dataRepository.Save<PrivateMessage>(AcceptPm);
