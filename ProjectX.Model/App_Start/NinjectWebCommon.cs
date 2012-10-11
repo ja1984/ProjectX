@@ -1,3 +1,5 @@
+using System.Configuration;
+using System.Web.Configuration;
 using Model.Nhibernate;
 using ProjectX.Model.Entities;
 using ProjectX.Model.Interfaces;
@@ -65,11 +67,12 @@ namespace ProjectX.Model.App_Start
         {
             public override void Load()
             {
-                /* For demo only...this should be in the web.config. */
-                //@"Data Source=mssql02.citynetwork.se;Initial Catalog=104820-spotquiz;User ID=104820-ve19602;Password=Admin123!"
-                //@"Data Source=DANIEL-DATOR\DANIEL;Initial Catalog=SpotQuiz;Integrated Security=True"
-                const string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Database1.mdf;Integrated Security=True;User Instance=True";
-
+                ///* For demo only...this should be in the web.config. */
+                ////@"Data Source=mssql02.citynetwork.se;Initial Catalog=104820-spotquiz;User ID=104820-ve19602;Password=Admin123!"
+                ////@"Data Source=DANIEL-DATOR\DANIEL;Initial Catalog=SpotQuiz;Integrated Security=True"
+                //const string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|Database1.mdf;Integrated Security=True;User Instance=True";
+                ConnectionStringSettingsCollection connectionStrings = WebConfigurationManager.ConnectionStrings;
+                string connectionString = connectionStrings["ProjectXConnection"].ConnectionString;
                 var helper = new NhibernateHelper(connectionString);
                 Bind<ISessionFactory>().ToConstant(helper.SessionFactory).InSingletonScope();
 
