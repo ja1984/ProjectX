@@ -56,6 +56,7 @@ namespace ProjectX.Models
         public DateTime Joined { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
+        public List<Project> Projects { get; set; }
 
         public string Image(ProfileImageSize imageSize)
         {

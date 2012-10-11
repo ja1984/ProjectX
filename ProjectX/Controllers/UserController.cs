@@ -102,6 +102,9 @@ namespace ProjectX.Controllers
         public ActionResult Details(int id, string userName)
         {
             var user = _dataRepository.Get<User>(id);
+            var projects = new List<Project>();
+            projects.AddRange(_dataRepository.FilterBy<Project>(x => x.User.Id == user.Id).ToList());
+           //projects.AddRange(_dataRepository.FilterBy<Project>(x => x.Collaborators.Where(z => z.User.Id == user.Id).Any()).ToList());
 
             var userViewModel = new UserViewModel
             {
@@ -114,6 +117,7 @@ namespace ProjectX.Controllers
                 Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
+                Projects =projects
             };
 
             string expectedName = HelperService.GenerateSlug(user.UserName);
