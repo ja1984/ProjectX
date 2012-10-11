@@ -47,6 +47,11 @@ nav.header
     padding: 15px 0;
 }
 
+/* Navigation */
+.nav li a {
+    padding: 15px !important;
+}
+/* End navigation*/
 div.octocat
 {
     background: url("/Content/images/octocat.png");
