@@ -42,10 +42,24 @@
     </table>
 </div>
 <div class="span4 right">
-    <h3>
-        Got an project?</h3>
-    <p>
-        ashdasdjkhasdhjasdasd fsdfasdfasdfasdfsdafasdfsdf
-    </p>
-    @Html.ActionLink("Create peojct", "Create", "Project", new { }, new { @class = "btn" })
+
+   <div class="alert alert-info">
+           <h3>
+        Got a project?</h3>
+     <p class="description">
+         Why don't you share it with us? <br /><br />
+
+         </p>
+       <p class="Header strong" style="margin-bottom:0px;">It's easy</p>
+       <p class="description">Fill out the three fielded form</p>
+       <p class="Header strong" style="margin-bottom:0px;">It's smart</p>
+       <p class="description">Specify what kind of collaborators you are looking for    </p>
+       <p class="Header strong" style="margin-bottom:0px;">It's fast</p>
+       <p class="description" >Share your project in just 2 minutes</p>
+       <br />
+       <p class="description">What are you waiting for?</p>
+       @Html.ActionLink("Create project", "Create", "Project", new { }, new { @class = "btn btn-info btn-block" })
+  </div>  
+    
+    
 </div>
