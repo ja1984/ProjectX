@@ -24,6 +24,28 @@ namespace ProjectX.Controllers
             return View();
         }
 
+        public ActionResult Create(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(PrivateMessage pm, int id)
+        {
+
+            var sender = _dataRepository.Get<User>(int.Parse(User.Identity.Name));
+            var receiver = _dataRepository.Get<User>(id);
+            var message = _dataRepository.Save<PrivateMessage>(new PrivateMessage
+            {
+                IsRead = false,
+                Message = pm.Message,
+                Sender = sender,
+                Reciever = receiver,
+                Header = pm.Header,
+                Sent = DateTime.Now
+            });
+            return View("../home/index");
+        }
 
         public JsonResult MarkAsRead(int messageId)
         {

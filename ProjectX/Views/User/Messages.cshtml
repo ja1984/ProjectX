@@ -6,6 +6,8 @@
     <!--ko with: selectedMessage()-->
     <h2 id="messageHeader" data-bind="text: header">
         Rubrik på meddelande</h2>
+        <h6 id="messageSender" data-bind="text: sender.DisplayName">
+        skickat av</h6>
     <p id="messageText" data-bind="text: message">
         Detta är texten!
     </p>
@@ -16,8 +18,8 @@
 <div class="span4 right">
     <ul class="messages" data-bind="foreach: messages()">
         <li class="message" data-bind="css : {'unread': !isRead()}, click: readMessage">
-            <p class="header" data-bind="text: header">
-            </p>
+            <p class="header"><span style="font-weight:bold;" data-bind="text: header"></span></p>
+            <p class="sender"> <span style="font-style:italic;" data-bind="text: sender.DisplayName"></span></p>
             <p class="information">
                 <span data-bind="text: sent"></span>
             </p>
@@ -58,7 +60,7 @@
 
                 };
 
-                return inner;
+                return inner; 
             };
 
             pub.viewModel = function () {
@@ -86,8 +88,7 @@
 
                 return inner;
             };
-            return pub;
-
+            return pub;   
         };
 
 

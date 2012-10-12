@@ -1,0 +1,42 @@
+﻿@model ProjectX.Model.Entities.PrivateMessage
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="span8 left">
+<h2>Send</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Private Message</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Header)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Header)
+            @Html.ValidationMessageFor(model => model.Header)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message, new { @class = "big" })
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <p>
+            <input type="submit" class="btn btn-success" value="Send" />
+        </p>
+    </fieldset>
+}
+
+
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
