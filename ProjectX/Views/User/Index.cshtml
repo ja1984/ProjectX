@@ -5,50 +5,40 @@
     ViewBag.Title = "Index";
 }
 
-<div class="span8 left">
-<h2>Test</h2>
-<div class="row-fluid">
+<div class="span12 all">
+    <div class="row-fluid">
 
-@foreach (var user in Model.Take(3))        {
-        <div class="span4">
-            @HelperService.LinkedImage("details","user",user.Id.ToString(),user.UserName,user.Email,ProfileImageSize.Search)
-            @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { }) 
-        </div>        
-        }
-
-</div>
-<div>
-<table class="table table-striped" style="margin-top: 25px;">
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th style="width: 100px;">
-                    Role
-                </th>
-            </tr>
-        </thead>
-        @foreach (var user in Model.Skip(3))
+        @foreach (var user in Model.Take(4))
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { })
-                </td>
-                <td>@ProjectX.Helpers.HelperService.GetRole(@user.Role)
-                </td>
-            </tr>
+            <div class="span3">
+                @HelperService.LinkedImage("details", "user", user.Id.ToString(), user.UserName, user.Email, ProfileImageSize.Search)
+                <p>@Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { })</p>
+            </div>        
         }
-    </table>
-</div>
-</div>
 
-<div class="span4 right">
-<h3>Got an project?</h3>
-<p>
-    ashdasdjkhasdhjasdasd
-    fsdfasdfasdfasdfsdafasdfsdf
-</p>
-@Html.ActionLink("Create peojct", "Create", "Project",new { }, new { @class = "btn" })
-
+    </div>
+    <div class="row-fluid">
+        <div>
+            <table class="table table-striped" style="margin-top: 25px;">
+                <thead>
+                    <tr>
+                        <th>Name
+                        </th>
+                        <th style="width: 100px;">Role
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { })
+                        </td>
+                        <td>@ProjectX.Helpers.HelperService.GetRole(@user.Role)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>

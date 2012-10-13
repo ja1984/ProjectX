@@ -5,7 +5,7 @@
 
 body
 {
-    background-color: #eee;
+    background-color: #fff;
     height: 100%;
     overflow-y: scroll;
 }
@@ -18,7 +18,7 @@ body
 article.container
 {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 0px solid #ddd;
     margin-bottom: 20px;
 }
 
@@ -251,8 +251,7 @@ ul.messages li p.information
 
 .footer
 {
-    background: url(/Content/images/test.png);
-    color: #fff;
+    background: #fff;
 }
 
 

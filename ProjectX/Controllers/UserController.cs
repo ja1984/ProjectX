@@ -103,13 +103,17 @@ namespace ProjectX.Controllers
         {
             var user = _dataRepository.Get<User>(id);
             var projects = new List<Project>();
+
+            //Get my projects
             projects.AddRange(_dataRepository.FilterBy<Project>(x => x.User.Id == user.Id).ToList());
-           //projects.AddRange(_dataRepository.FilterBy<Project>(x => x.Collaborators.Where(z => z.User.Id == user.Id).Any()).ToList());
+
+            //Get all the projects where I'm a collaborator
+            projects.AddRange(_dataRepository.FilterBy<Project>(x => x.Collaborators.Any(z => z.User.Id == user.Id)).ToList());
 
             var userViewModel = new UserViewModel
             {
                 DisplayEmail = user.DisplayEmail,
-                DisplayName = user.UserName,
+                DisplayName = user.DisplayName,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 GitHubUserName = user.GitHub,
@@ -117,7 +121,7 @@ namespace ProjectX.Controllers
                 Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
-                Projects =projects
+                Projects = projects
             };
 
             string expectedName = HelperService.GenerateSlug(user.UserName);
@@ -197,15 +201,15 @@ namespace ProjectX.Controllers
             return View();
         }
 
-        
+
         public ActionResult createPDF(int id)
         {
             User u = _dataRepository.Get<User>(id);
 
 
             //WORKS, COSTS MONEY
-//var path = Server.MapPath("/PDFs");
-//HtmlToPdf.ConvertUrl("http://localhost:12832/user/101/ja1984", path + string.Format("/{0}.pdf", u.UserName));
+            //var path = Server.MapPath("/PDFs");
+            //HtmlToPdf.ConvertUrl("http://localhost:12832/user/101/ja1984", path + string.Format("/{0}.pdf", u.UserName));
 
 
 
