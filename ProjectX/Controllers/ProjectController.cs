@@ -72,7 +72,7 @@ namespace ProjectX.Controllers
                 Openings = openings.Select(x => new Opening { Role = new Role() { Id = int.Parse(x) } }).ToList()
             });
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

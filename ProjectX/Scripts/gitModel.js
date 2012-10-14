@@ -1,4 +1,4 @@
-﻿var GitModel = function () {
+﻿var ProjectModel = function () {
     var priv = {};
     var pub = {};
 
@@ -13,6 +13,22 @@
 
         inner.commits = ko.observableArray([]);
         inner.showAllCommits = ko.observable(false);
+
+
+        inner.following = ko.observable(false);
+        inner.toggleFollow = function () {
+
+
+            $.ajax({
+                url: "/project/follow",
+                data: { id: config.projectId },
+                success: function () {
+                    inner.following(!inner.following());
+                }
+            });
+        };
+
+
 
         inner.getCommits = function () {
             $.ajax({
