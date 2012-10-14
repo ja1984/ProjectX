@@ -4,14 +4,14 @@
 
     priv.role = function (role) {
         switch (role) {
-            case 0:
-                return { "image": "icon-pencil", "displayRole": "developer", "role": 0 };
+            case 101:
+                return { "image": "icon-pencil", "displayRole": "developer", "role": 101 };
                 break;
-            case 1:
-                return { "image": "icon-picture", "displayRole": "designer", "role": 1 };
+            case 102:
+                return { "image": "icon-picture", "displayRole": "designer", "role": 102 };
                 break;
-            case 2:
-                return { "image": "icon-eye-open", "displayRole": "tester", "role": 2 };
+            case 103:
+                return { "image": "icon-eye-open", "displayRole": "tester", "role": 103 };
                 break;
         }
     };
