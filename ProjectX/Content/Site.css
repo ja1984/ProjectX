@@ -392,3 +392,17 @@ a.thumbnail:hover {
   padding: 9px;
   color: #555555;
 }
+
+.follow {
+    height:32px;
+    width:32px;
+    background:url("/Content/images/heart_off.png");
+    cursor:pointer;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:10px;
+}
+
+.follow.checked {
+    background:url("/Content/images/heart_on.png");
+}

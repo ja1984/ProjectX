@@ -3,9 +3,9 @@
     ViewBag.Title = "View";
 }
 <div class="span8 left">
-    <h2><img src="/Content/images/star_off.png" />  @Model.Name</h2>
+    <p class="follow" data-bind="click: toggleFollow, css: {'checked' : following()}"></p><h2 style="display:inline-block;">@Model.Name</h2>
     <!-- start slipsum code -->
-    @Html.Raw(Model.Description.Replace("\n", "<br />"))
+   <p> @Html.Raw(Model.Description.Replace("\n", "<br />"))</p>
     <!-- please do not remove this line -->
     <div style="display: none;">
         <a href="http://slipsum.com">lorem ipsum</a>
@@ -84,10 +84,13 @@
 
             var config = {
                 user: 'ja1984',
-                repository: '@Model.GitHubName'
+                repository: '@Model.GitHubName',
+                following: $("#Follow"),
+                projectId: @Model.Id
             };
 
-            ko.applyBindings(new GitModel().viewModel(config), document.getElementById("github"));
+            ko.applyBindings(new ProjectModel().viewModel(config), document.getElementById("content"));
         });
+
     </script>
 }
