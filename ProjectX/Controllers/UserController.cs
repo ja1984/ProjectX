@@ -219,17 +219,22 @@ namespace ProjectX.Controllers
 
         public string Rebuild()
         {
+            var developer = new Role { Name = "Developer" };
+            var designer = new Role { Name = "Designer" };
+            var tester = new Role { Name = "Tester" };
+
+
             //Add the roles
-            _dataRepository.Save(new Role { Name = "Developer" });
-            _dataRepository.Save(new Role { Name = "Designer" });
-            _dataRepository.Save(new Role { Name = "Tester" });
+            _dataRepository.Save(developer);
+            _dataRepository.Save(designer);
+            _dataRepository.Save(tester);
 
             //Add the platforms
             _dataRepository.Save(new Platform() { Name = "Mobile" });
             _dataRepository.Save(new Platform() { Name = "Web" });
             _dataRepository.Save(new Platform() { Name = "Desktop" });
             _dataRepository.Save(new Platform() { Name = "Multi" });
-            
+
 
             //Add the languages
             _dataRepository.Save(new Language() { Name = "ActionScript" });
@@ -241,7 +246,59 @@ namespace ProjectX.Controllers
 
 
             //Add some users
-            //_dataRepository.Save(new User() { Created = DateTime.Now, });
+            var salt1 = HelperService.GenerateSalt("ja1984");
+            _dataRepository.Save(new User()
+            {
+                Created = DateTime.Now,
+                Description = "asdasd",
+                DisplayEmail = true,
+                DisplayName = "Jonathan Andersson",
+                Email = "ja1984@gmail.com",
+                FirstName = "Jonathan",
+                GitHub = "ja1984",
+                GravatarEmail = "ja1984@gmail.com",
+                LastName = "Andersson",
+                Password = HelperService.GenerateHash(salt1, "jonis"),
+                Role = developer,
+                Salt = salt1,
+                UserName = "ja1984"
+            });
+
+            var salt2 = HelperService.GenerateSalt("meskHest");
+            _dataRepository.Save(new User()
+            {
+                Created = DateTime.Now,
+                Description = "asdasd",
+                DisplayEmail = true,
+                DisplayName = "Fredrik Olsson",
+                Email = "fredrik@mrolsson.se",
+                FirstName = "Fredrik",
+                GitHub = "meskHest",
+                GravatarEmail = "fredrik@mrolsson.se",
+                LastName = "Olsson",
+                Password = HelperService.GenerateHash(salt2, "fredde"),
+                Role = developer,
+                Salt = salt2,
+                UserName = "meskHest"
+            });
+
+            var salt3 = HelperService.GenerateSalt("test");
+            _dataRepository.Save(new User()
+            {
+                Created = DateTime.Now,
+                Description = "asdasd",
+                DisplayEmail = true,
+                DisplayName = "Test Testsson",
+                Email = "test@test.com",
+                FirstName = "Test",
+                GitHub = "test",
+                GravatarEmail = "test@test.com",
+                LastName = "Testsson",
+                Password = HelperService.GenerateHash(salt3, "test"),
+                Role = developer,
+                Salt = salt3,
+                UserName = "test"
+            });
 
 
 
