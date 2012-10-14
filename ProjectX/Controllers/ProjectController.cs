@@ -46,6 +46,9 @@ namespace ProjectX.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Languages = _dataRepository.All<Language>().OrderBy(x => x.Name).ToList();
+            ViewBag.Platforms = _dataRepository.All<Platform>().OrderBy(x => x.Name).ToList();
+
             return View();
         }
 
@@ -54,6 +57,9 @@ namespace ProjectX.Controllers
         {
             List<string> openings = collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+            var language = _dataRepository.Get<Language>(projectRegisterModel.LanguageId);
+            var platform = _dataRepository.Get<Platform>(projectRegisterModel.PlatFormId);
+
             var id = _dataRepository.Save<Project>(new Project
             {
                 Created = DateTime.Now,
@@ -61,6 +67,8 @@ namespace ProjectX.Controllers
                 Name = projectRegisterModel.Name,
                 GitHubName = projectRegisterModel.GitHubName,
                 User = _dataRepository.Get<User>(int.Parse(User.Identity.Name)),
+                Platform = platform,
+                Language = language,
                 Openings = openings.Select(x => new Opening { Role = new Role() { Id = int.Parse(x) } }).ToList()
             });
 

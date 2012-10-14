@@ -14,7 +14,6 @@ namespace ProjectX.Models
         [Display(Name = "Project name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Field is required")]
         [Display(Name = "GitHub name")]
         public string GitHubName { get; set; }
 
@@ -24,6 +23,13 @@ namespace ProjectX.Models
         public string Description { get; set; }
         [Display(AutoGenerateField = false)]
         public User Creator { get; set; }
+
+        [Display(Name = "Language")]
+        public int LanguageId { get; set; }
+
+        [Display(Name = "Platform")]
+        public int PlatFormId { get; set; }
+
     }
 
 }

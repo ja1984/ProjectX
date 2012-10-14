@@ -17,6 +17,7 @@ namespace ProjectX.Model.Mappings
 
             References(x => x.User);
             References(x => x.Platform);
+            References(x => x.Language);
             HasMany(x => x.Images);
             HasMany(x => x.Openings).Cascade.All();
             HasMany(x => x.Applications).Cascade.All();

@@ -23,6 +23,32 @@
                 @Html.EditorFor(model => model.GitHubName)
                 @Html.ValidationMessageFor(model => model.GitHubName)
             </div>
+            
+            
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PlatFormId)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.PlatFormId, new SelectList(ViewBag.Platforms, "Id", "Name"))
+
+            </div>
+            
+            
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LanguageId)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.LanguageId, new SelectList(ViewBag.Languages, "Id", "Name"))
+                
+            </div>
+            
+            
+            
+            
+            
+
             <div class="editor-label" style="margin-top:35px;">
                 @Html.LabelFor(model => model.Description)
             </div>
@@ -81,7 +107,7 @@
 
         $(function () {
 
-            var projectModel = new createModel().viewModel()
+            var projectModel = new createModel().viewModel();
             ko.applyBindings(projectModel, document.getElementById("content"));
 
 
