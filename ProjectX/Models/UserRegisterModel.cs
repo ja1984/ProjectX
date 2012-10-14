@@ -57,6 +57,7 @@ namespace ProjectX.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public List<Project> Projects { get; set; }
+        public Role Role { get; set; }
 
         public string Image(ProfileImageSize imageSize)
         {

@@ -122,6 +122,7 @@ namespace ProjectX.Controllers
                 Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
+                Role = user.Role,
                 Projects = projects.DistinctBy(x => x.Id).ToList()
             };
 

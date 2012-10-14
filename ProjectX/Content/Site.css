@@ -47,10 +47,14 @@ nav.header
     padding: 15px 0;
 }
 
-/* Navigation */
-.nav li a {
+.menupadding {
     padding: 15px !important;
 }
+
+/* Navigation */
+/*.nav li a {
+    padding: 15px !important;
+}*/
 /* End navigation*/
 div.octocat
 {

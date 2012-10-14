@@ -53,21 +53,23 @@
         <ul class="unstyled" style="margin-left: 10px;">
             <li><i class="icon-star"></i>@Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
 
-            @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x => x.Role))
+            @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x => x.Role.Name))
             {
-                <li>@string.Format("{0} - {1}", collaborator.User.DisplayName, collaborator.Role)</li>
+                <li>@string.Format("{0} - {1}", collaborator.User.DisplayName, collaborator.Role.Name)</li>
             }
         </ul>
+
+        @if(Model.Openings.Any()){
+
         <h4 style="margin-top: 25px;">Open spots</h4>
         <ul class="unstyled" style="margin-left: 10px;">
-            @foreach (var spot in Model.Openings.OrderBy(x => x.Role))
+            @foreach (var spot in Model.Openings.OrderBy(x => x.Role.Name))
             {
-                <li>@spot.GetRole(spot.Role)</li>
+                <li>@spot.Role.Name</li>
             }
         </ul>
-        @if (Model.Openings.Any())
-        { 
-            @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
+        @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
+
         }
     </div>
 </div>
