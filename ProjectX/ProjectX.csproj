@@ -165,6 +165,8 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\icon_ano.png" />
     <Content Include="Content\images\octocat-spinner-64.gif" />
+    <Content Include="Content\images\star_off.png" />
+    <Content Include="Content\images\star_on.png" />
     <Content Include="Content\images\test.png" />
     <Content Include="Content\images\whyjoin.png" />
     <Content Include="Content\jquery.fancybox.css" />

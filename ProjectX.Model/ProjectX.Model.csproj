@@ -83,6 +83,7 @@
     <Compile Include="Entities\Collaborator.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Follow.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Opening.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Mappings\CollaboratorMap.cs" />
     <Compile Include="Mappings\CommentMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
+    <Compile Include="Mappings\FollowMap.cs" />
     <Compile Include="Mappings\ImageMap.cs" />
     <Compile Include="Mappings\LanguageMap.cs" />
     <Compile Include="Mappings\OpeningMap.cs" />
