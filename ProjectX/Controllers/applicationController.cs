@@ -50,7 +50,7 @@ namespace ProjectX.Controllers
             var project = _dataRepository.Get<Project>(application.Project.Id);
             var test = application.Role;
             project.Collaborators.Add(new Collaborator { User = application.User, Role = (Role)application.Role });
-            Opening OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role == application.Role).First();
+            Opening OpeningToDelete = _dataRepository.FilterBy<Opening>(x => x.Role.Id == application.Role.Id).First();
             project.Openings.Remove(OpeningToDelete);
 
 

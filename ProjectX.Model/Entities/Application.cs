@@ -10,7 +10,7 @@ namespace ProjectX.Model.Entities
 
         public virtual User User { get; set; }
         public virtual Project Project { get; set; }
-        public virtual int Role { get; set; }
+        public virtual Role Role { get; set; }
         public virtual string Message { get; set; }
         public virtual DateTime Sent { get; set; }
 

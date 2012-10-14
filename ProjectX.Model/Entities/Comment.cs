@@ -13,6 +13,5 @@ namespace ProjectX.Model.Entities
         public virtual User User { get; set; }
         public virtual DateTime Sent { get; set; }
 
-
     }
 }

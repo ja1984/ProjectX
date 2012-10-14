@@ -17,6 +17,7 @@ using EO.Pdf;
 using EO.Pdf.Acm;
 using EO.Pdf.Contents;
 using EO.Pdf.Drawing;
+using MoreLinq;
 
 
 
@@ -121,7 +122,7 @@ namespace ProjectX.Controllers
                 Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
-                Projects = projects
+                Projects = projects.DistinctBy(x=>x.Id).ToList()
             };
 
             string expectedName = HelperService.GenerateSlug(user.UserName);
@@ -179,6 +180,8 @@ namespace ProjectX.Controllers
 
             var salt = HelperService.GenerateSalt(userRegisterModel.UserName);
 
+            var role = _dataRepository.Get<Role>(userRegisterModel.RoleId);
+
             var id = _dataRepository.Save<User>(new User
             {
                 UserName = userRegisterModel.UserName,
@@ -190,7 +193,7 @@ namespace ProjectX.Controllers
                 Salt = salt,
                 GitHub = userRegisterModel.GitHubUserName,
                 Created = DateTime.Now,
-                Role = userRegisterModel.Role,
+                Role = role,
                 DisplayEmail = userRegisterModel.DisplayEmail,
                 Description = string.Empty,
                 DisplayName = string.Concat(userRegisterModel.FirstName, " ", userRegisterModel.LastName)

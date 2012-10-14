@@ -11,13 +11,4 @@ namespace ProjectX.Model.Entities
         public virtual User User { get; set; }
         public virtual Role Role { get; set; }
     }
-
-
-    public enum Role
-    {
-        Developer,
-        Designer,
-        Tester
-    }
-
 }

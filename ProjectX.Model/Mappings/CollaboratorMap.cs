@@ -10,7 +10,7 @@ namespace ProjectX.Model.Mappings
     {
         public CollaboratorMap()
         {
-            Map(x => x.Role);
+            References(x => x.Role);
             References(x => x.User);
         }
     }

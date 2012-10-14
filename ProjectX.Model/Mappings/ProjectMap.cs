@@ -16,6 +16,7 @@ namespace ProjectX.Model.Mappings
             Map(x => x.GitHubName);
 
             References(x => x.User);
+            References(x => x.Platform);
             HasMany(x => x.Images);
             HasMany(x => x.Openings).Cascade.All();
             HasMany(x => x.Applications).Cascade.All();

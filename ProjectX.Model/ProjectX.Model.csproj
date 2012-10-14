@@ -84,9 +84,12 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Image.cs" />
+    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Opening.cs" />
+    <Compile Include="Entities\Platform.cs" />
     <Compile Include="Entities\PrivateMessage.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IDataRepository.cs" />
     <Compile Include="Interfaces\IReadOnlyRepository.cs" />
@@ -96,9 +99,12 @@
     <Compile Include="Mappings\CommentMap.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\ImageMap.cs" />
+    <Compile Include="Mappings\LanguageMap.cs" />
     <Compile Include="Mappings\OpeningMap.cs" />
+    <Compile Include="Mappings\PlatformMap.cs" />
     <Compile Include="Mappings\PrivateMessageMap.cs" />
     <Compile Include="Mappings\ProjectMap.cs" />
+    <Compile Include="Mappings\RoleMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Nhibernate\Conventions.cs" />
     <Compile Include="Nhibernate\IUnitOfWork.cs" />

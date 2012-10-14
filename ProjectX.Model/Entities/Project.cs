@@ -21,6 +21,7 @@ namespace ProjectX.Model.Entities
         public virtual DateTime Created { get; set; }
         public virtual string Description { get; set; }
         public virtual User User { get; set; }
+        public virtual Platform Platform { get; set; }
         public virtual string GitHubName { get; set; }
         public virtual IList<Image> Images { get; set; }
         public virtual IList<Collaborator> Collaborators { get; set; }

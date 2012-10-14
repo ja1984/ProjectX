@@ -11,10 +11,10 @@ namespace ProjectX.Model.Mappings
         public ApplicationMap()
         {
             Map(x => x.Sent);
-            Map(x => x.Role);
             Map(x => x.Message).Length(4001);
             References(x => x.Project);
             References(x => x.User);
+            References(x => x.Role);
         }
 
     }

@@ -50,9 +50,9 @@ namespace ProjectX.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ProjectRegisterModel projectRegisterModel, string Collaborators)
+        public ActionResult Create(ProjectRegisterModel projectRegisterModel, string collaborators)
         {
-            List<string> openings = Collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> openings = collaborators.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             var id = _dataRepository.Save<Project>(new Project
             {
@@ -61,7 +61,7 @@ namespace ProjectX.Controllers
                 Name = projectRegisterModel.Name,
                 GitHubName = projectRegisterModel.GitHubName,
                 User = _dataRepository.Get<User>(int.Parse(User.Identity.Name)),
-                Openings = openings.Select(x => new Opening { Role = int.Parse(x) }).ToList()
+                Openings = openings.Select(x => new Opening { Role = new Role() { Id = int.Parse(x) } }).ToList()
             });
 
             return View();

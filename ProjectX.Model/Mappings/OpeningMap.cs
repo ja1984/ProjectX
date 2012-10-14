@@ -11,7 +11,7 @@ namespace ProjectX.Model.Mappings
 
         public OpeningMap()
         {
-            Map(x => x.Role);
+            References(x => x.Role);
             References(x => x.Project);
         }
 

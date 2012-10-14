@@ -38,7 +38,7 @@ namespace ProjectX.Models
         [Display(Name = "Display my email")]
         public bool DisplayEmail { get; set; }
 
-        public int Role { get; set; }
+        public int RoleId { get; set; }
 
     }
 

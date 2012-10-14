@@ -23,7 +23,7 @@ namespace ProjectX.Model.Entities
         public virtual string GitHub { get; set; }
         public virtual bool DisplayEmail { get; set; }
         public virtual DateTime Created { get; set; }
-        public virtual int Role { get; set; }
+        public virtual Role Role { get; set; }
         public virtual string Description { get; set; }
         public virtual string DisplayName { get; set; }
     }
