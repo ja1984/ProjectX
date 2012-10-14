@@ -34,7 +34,7 @@
                         <td>
                             @Html.ActionLink(@user.DisplayName, "details", "user", new { id = user.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(user.UserName) }, new { })
                         </td>
-                        <td>@ProjectX.Helpers.HelperService.GetRole(@user.Role)
+                        <td>@user.Role.Name
                         </td>
                     </tr>
                 }

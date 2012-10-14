@@ -168,6 +168,8 @@ namespace ProjectX.Controllers
 
         public ActionResult Register()
         {
+            ViewBag.Roles =_dataRepository.All<Role>().ToList();
+            
             return View();
         }
 
