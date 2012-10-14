@@ -74,5 +74,21 @@ namespace ProjectX.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public JsonResult Follow(int id)
+        {
+            var follow = _dataRepository.FilterBy<Follow>(x => x.Project.Id == id && x.User.Id == int.Parse(User.Identity.Name)).FirstOrDefault();
+
+            if (follow == null)
+            {
+                _dataRepository.Save<Follow>(new Follow { Project = new Project { Id = id }, User = new User { Id = int.Parse(User.Identity.Name) } });
+            }
+            else
+            {
+                _dataRepository.Delete<Follow>(follow);
+            }
+
+            return Json(follow == null);
+        }
     }
 }
