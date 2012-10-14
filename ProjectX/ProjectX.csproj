@@ -161,12 +161,13 @@
     <Content Include="Content\fancybox_loading.gif" />
     <Content Include="Content\fancybox_overlay.png" />
     <Content Include="Content\fancybox_sprite.png" />
+    <Content Include="Content\images\follower_small.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
-    <Content Include="Content\images\heart_off.png" />
-    <Content Include="Content\images\heart_on.png" />
     <Content Include="Content\images\icon_ano.png" />
     <Content Include="Content\images\octocat-spinner-64.gif" />
+    <Content Include="Content\images\star_off.png" />
+    <Content Include="Content\images\star_on.png" />
     <Content Include="Content\images\test.png" />
     <Content Include="Content\images\whyjoin.png" />
     <Content Include="Content\jquery.fancybox.css" />

@@ -3,9 +3,10 @@
     ViewBag.Title = "View";
 }
 <div class="span8 left">
-    <p class="follow" data-bind="click: toggleFollow, css: {'checked' : following()}"></p><h2 style="display:inline-block;">@Model.Name</h2>
+    <p class="follow" data-bind="click: toggleFollow, css: {'checked' : following()}"></p>
+    <h2 style="display: inline-block;">@Model.Name</h2>
     <!-- start slipsum code -->
-   <p> @Html.Raw(Model.Description.Replace("\n", "<br />"))</p>
+    <p>@Html.Raw(Model.Description.Replace("\n", "<br />"))</p>
     <!-- please do not remove this line -->
     <div style="display: none;">
         <a href="http://slipsum.com">lorem ipsum</a>
@@ -59,16 +60,17 @@
             }
         </ul>
 
-        @if(Model.Openings.Any()){
+        @if (Model.Openings.Any())
+        {
 
-        <h4 style="margin-top: 25px;">Open spots</h4>
-        <ul class="unstyled" style="margin-left: 10px;">
-            @foreach (var spot in Model.Openings.OrderBy(x => x.Role.Name))
-            {
-                <li>@spot.Role.Name</li>
-            }
-        </ul>
-        @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
+            <h4 style="margin-top: 25px;">Open spots</h4>
+            <ul class="unstyled" style="margin-left: 10px;">
+                @foreach (var spot in Model.Openings.OrderBy(x => x.Role.Name))
+                {
+                    <li>@spot.Role.Name</li>
+                }
+            </ul>
+            @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
 
         }
     </div>
@@ -87,7 +89,7 @@
                 repository: '@Model.GitHubName',
                 following: $("#Follow"),
                 projectId: @Model.Id
-            };
+                };
 
             ko.applyBindings(new ProjectModel().viewModel(config), document.getElementById("content"));
         });
