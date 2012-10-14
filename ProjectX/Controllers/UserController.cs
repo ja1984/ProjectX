@@ -122,7 +122,7 @@ namespace ProjectX.Controllers
                 Joined = user.Created,
                 LastName = user.LastName,
                 Id = user.Id,
-                Projects = projects.DistinctBy(x=>x.Id).ToList()
+                Projects = projects.DistinctBy(x => x.Id).ToList()
             };
 
             string expectedName = HelperService.GenerateSlug(user.UserName);
@@ -214,10 +214,38 @@ namespace ProjectX.Controllers
             //var path = Server.MapPath("/PDFs");
             //HtmlToPdf.ConvertUrl("http://localhost:12832/user/101/ja1984", path + string.Format("/{0}.pdf", u.UserName));
 
-
-
-
             return RedirectToAction("Index");
+        }
+
+        public string Rebuild()
+        {
+            //Add the roles
+            _dataRepository.Save(new Role { Name = "Developer" });
+            _dataRepository.Save(new Role { Name = "Designer" });
+            _dataRepository.Save(new Role { Name = "Tester" });
+
+            //Add the platforms
+            _dataRepository.Save(new Platform() { Name = "Mobile" });
+            _dataRepository.Save(new Platform() { Name = "Web" });
+            _dataRepository.Save(new Platform() { Name = "Desktop" });
+            _dataRepository.Save(new Platform() { Name = "Multi" });
+            
+
+            //Add the languages
+            _dataRepository.Save(new Language() { Name = "ActionScript" });
+            _dataRepository.Save(new Language() { Name = "C" });
+            _dataRepository.Save(new Language() { Name = "C++" });
+            _dataRepository.Save(new Language() { Name = "C#" });
+            _dataRepository.Save(new Language() { Name = "Object-C" });
+            _dataRepository.Save(new Language() { Name = "Java" });
+
+
+            //Add some users
+            //_dataRepository.Save(new User() { Created = DateTime.Now, });
+
+
+
+            return "Done";
         }
     }
 }
