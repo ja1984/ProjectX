@@ -169,6 +169,7 @@
     <Content Include="Content\helpers\jquery.fancybox-thumbs.css" />
     <Content Include="Content\helpers\jquery.fancybox-thumbs.js" />
     <Content Include="Content\images\follower_small.png" />
+    <Content Include="Content\images\footer_bg.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\heart_off.png" />
@@ -177,10 +178,6 @@
     <Content Include="Content\images\icons\projectupdate.png" />
     <Content Include="Content\images\icons\add_usr_green.png" />
     <Content Include="Content\images\icons\useradded.png" />
-    <Content Include="Content\images\icons\add_comment_green.png" />
-    <Content Include="Content\images\icons\add_comment_orange.png" />
-    <Content Include="Content\images\icons\add_usr_green.png" />
-    <Content Include="Content\images\icons\add_usr_orange.png" />
     <Content Include="Content\images\icons\box_down.png" />
     <Content Include="Content\images\icons\box_minus.png" />
     <Content Include="Content\images\icons\box_plus.png" />
@@ -322,6 +319,7 @@
     <Content Include="Views\Application\Details.cshtml" />
     <Content Include="Views\Application\ApplyForOpening.cshtml" />
     <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Home\Feed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">
