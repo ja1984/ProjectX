@@ -255,7 +255,8 @@ ul.messages li p.information
 
 .footer
 {
-background: url(/Content/images/test.png);
+background: url(/Content/images/footer_bg.png);
+background-repeat: repeat-x;
 color: #fff;
 
 }
@@ -405,4 +406,16 @@ a.thumbnail:hover {
 
 .follow.checked {
     background:url("/Content/images/heart_on.png");
+}
+
+
+.updates .row-fluid
+{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.updates .row-fluid:last-child
+{
+    border-bottom: 0;
 }

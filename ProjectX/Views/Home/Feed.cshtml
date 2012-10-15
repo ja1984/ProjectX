@@ -3,46 +3,19 @@
     ViewBag.Title = "Feed";
 }
 <h2>
-    Feed</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Header)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Added)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-    </tr>
-    @foreach (var item in Model)
+    Latest updates</h2>
+    <div class="updates">
+    @foreach (var update in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Header)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Added)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.DisplayName)
-            </td>
-        </tr>
+        <div class="row-fluid">
+            <div class="span1">
+                <img src="/Content/images/icons/@(update.Type).png" />
+            </div>
+            <div class="span11">
+                <p><a href="#">@update.Header</a></p>
+                <p>@update.Message</p>
+                <p>@update.Added - @update.Project.Name</p>
+            </div>
+        </div>
     }
-</table>
+    </div>

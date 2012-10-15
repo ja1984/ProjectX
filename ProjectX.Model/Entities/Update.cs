@@ -19,6 +19,10 @@ namespace ProjectX.Model.Entities
     public enum UpdateType
     {
         useradded,
-        userdeleted,
+        projectupdate,
+        newopening,
+        addedbuild,
+        userdeleted
+
     }
 }
