@@ -5,6 +5,9 @@
 <div class="span8 left">
     <p class="follow" data-bind="click: toggleFollow, css: {'checked' : following()}"></p>
     <h2 style="display: inline-block;">@Model.Name</h2>
+    
+    <p ><span class="label label-info" style="padding:5px;">@Model.Platform.Name</span><span class="label label-info" style="padding:5px; margin-left:5px;">@Model.Language.Name</span></p>
+    
     <!-- start slipsum code -->
     <p>@Html.Raw(Model.Description.Replace("\n", "<br />"))</p>
     <!-- please do not remove this line -->
