@@ -1,10 +1,10 @@
-﻿@model ProjectX.Models.ApplicationViewModel
-
+﻿@model ProjectX.Models.ApplicationApplyModel
+@using MoreLinq;
 @{
     ViewBag.Title = "ApplyForOpening";
 }
 <div class="span12 all">
-    <h2>Apply for @Model.Projects.First().Name</h2>
+    <h2>Apply for @Model.Name</h2>
 
     @using (Html.BeginForm())
     {
@@ -16,15 +16,10 @@
                 <label for="Role">Position of</label>
             </div>
             <div class="editor-field">
-                <select name="Role">
-                    @foreach (var opening in Model.Projects.First().Openings)
-                    {
-                        <option value="@opening.Role">@opening.GetRole(opening.Role)</option>
-                    }
-                </select>
+                @Html.DropDownListFor(model => model.RoleId, new SelectList(ViewBag.Openings, "Role.Id", "Role.Name"))
             </div>
             <div class="editor-label" style="margin-top: 35px;">
-                @Html.LabelFor(model => Model.Application.Message)
+                @Html.LabelFor(model => Model.Message)
             </div>
             <div class="editor-field">
                 <textarea class="big" name="Message"></textarea>
@@ -32,9 +27,9 @@
                 @Html.ValidationMessageFor(model => Model.Application.Message)*@
             </div>
 
-            <input type="hidden" value="@Model.Projects.First().Id" />
+            <input type="hidden" name="ProjectId" value="@Model.ProjectId" />
 
-                <input type="submit" value="Send my application" class="btn" />
+            <input type="submit" value="Send my application" class="btn" />
 
         </fieldset>
     }

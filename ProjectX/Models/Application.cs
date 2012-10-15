@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ProjectX.Model.Entities;
 
 namespace ProjectX.Models
 {
-    public class ApplicationViewModel
+    public class ApplicationApplyModel
     {
-        public Application Application { get; set; }
         public int RoleId { get; set; }
-        public List<Project> Projects { get; set; }
+        public int ProjectId { get; set; }
+        public string Message { get; set; }
+        public string Name { get; set; }
+
     }
 }

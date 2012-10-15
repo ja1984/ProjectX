@@ -52,7 +52,7 @@
     <div class="row-fluid box">
         <h4>Collaborators</h4>
         <ul class="unstyled" style="margin-left: 10px;">
-            <li><i class="icon-star"></i>@Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
+            <li><i class="icon-star" style="margin-right:5px;"></i>@Html.ActionLink(@Model.User.DisplayName, "details", "user", new { id = Model.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(Model.User.UserName) }, new { })</li>
 
             @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x => x.Role.Name))
             {

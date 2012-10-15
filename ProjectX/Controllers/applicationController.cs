@@ -7,6 +7,7 @@ using ProjectX.Model.Interfaces;
 using ProjectX.Model.Entities;
 using ProjectX.Models;
 using ProjectX.Helpers;
+using MoreLinq;
 
 namespace ProjectX.Controllers
 {
@@ -54,7 +55,7 @@ namespace ProjectX.Controllers
             project.Openings.Remove(OpeningToDelete);
 
 
-            var AcceptPm = new PrivateMessage { Header = string.Format("Application for {0} accepted", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("You are now a part of the {0} project, good luck", application.Project.Name ) };
+            var AcceptPm = new PrivateMessage { Header = string.Format("Application for {0} accepted", application.Project.Name), Reciever = application.User, IsRead = false, Sent = DateTime.Now, Sender = application.Project.User, Message = string.Format("You are now a part of the {0} project, good luck", application.Project.Name) };
             _dataRepository.Save<PrivateMessage>(AcceptPm);
             _dataRepository.Delete<Opening>(OpeningToDelete);
             _dataRepository.Update<Project>(application.Project);
@@ -76,26 +77,25 @@ namespace ProjectX.Controllers
 
         public ActionResult ApplyForOpening(int id)
         {
-            List<Project> projects = new List<Project>();
             var project = _dataRepository.Get<Project>(id);
-            projects.Add(project);
-            return View(new ApplicationViewModel { Projects = projects });
+            ViewBag.Openings = project.Openings.DistinctBy(x => x.Role.Id);
+            return View(new ApplicationApplyModel { ProjectId = id, Name = project.Name });
         }
 
         [HttpPost]
-        public ActionResult ApplyForOpening(Application app, int id)
+        public ActionResult ApplyForOpening(ApplicationApplyModel application)
         {
 
-            var project = _dataRepository.Get<Project>(id);
+            var project = _dataRepository.Get<Project>(application.ProjectId);
 
-            var test = _dataRepository.Save<Application>(new Application
+            _dataRepository.Save<Application>(new Application
             {
-                Role = app.Role,
+                Role = _dataRepository.Get<Role>(application.RoleId),
                 User = _dataRepository.Get<User>(int.Parse(User.Identity.Name)),
-                Message = app.Message,
+                Message = application.Message,
                 Sent = DateTime.Now,
-                Project = project  
-                
+                Project = project
+
             });
 
 

@@ -11,7 +11,8 @@ namespace ProjectX.Model.Mappings
     {
         public FollowMap()
         {
-            References(x => x.User).Cascade.All();
+            References(x => x.User).Cascade.None();
+            References(x => x.Project).Cascade.None();
         }
 
     }
