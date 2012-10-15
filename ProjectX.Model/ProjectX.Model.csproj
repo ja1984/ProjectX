@@ -91,6 +91,7 @@
     <Compile Include="Entities\PrivateMessage.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Update.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IDataRepository.cs" />
     <Compile Include="Interfaces\IReadOnlyRepository.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Mappings\PrivateMessageMap.cs" />
     <Compile Include="Mappings\ProjectMap.cs" />
     <Compile Include="Mappings\RoleMap.cs" />
+    <Compile Include="Mappings\UpdateMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Nhibernate\Conventions.cs" />
     <Compile Include="Nhibernate\IUnitOfWork.cs" />

@@ -75,6 +75,7 @@ namespace ProjectX.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public JsonResult Follow(int id)
         {
             var follow = _dataRepository.FilterBy<Follow>(x => x.Project.Id == id && x.User.Id == int.Parse(User.Identity.Name)).FirstOrDefault();
@@ -89,7 +90,14 @@ namespace ProjectX.Controllers
                 _dataRepository.Delete<Follow>(follow);
             }
 
-            return Json(follow == null, JsonRequestBehavior.AllowGet);
+            return Json(follow == null);
+        }
+
+        [HttpPost]
+        public JsonResult CheckFollowing(int id)
+        {
+            var follow = _dataRepository.FilterBy<Follow>(x => x.Project.Id == id && x.User.Id == int.Parse(User.Identity.Name)).FirstOrDefault();
+            return Json(follow == null);
         }
     }
 }
