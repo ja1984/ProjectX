@@ -322,6 +322,7 @@
     <Content Include="Views\Application\Details.cshtml" />
     <Content Include="Views\Application\ApplyForOpening.cshtml" />
     <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Home\Feed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectX.Model\ProjectX.Model.csproj">
