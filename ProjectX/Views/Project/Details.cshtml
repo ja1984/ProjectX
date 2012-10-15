@@ -56,7 +56,19 @@
 
             @foreach (var collaborator in Model.Collaborators.ToList().OrderBy(x => x.Role.Name))
             {
-                <li>@string.Format("{0} - {1}", collaborator.User.DisplayName, collaborator.Role.Name)</li>
+                if (collaborator.Role.Name == "Developer")
+                {
+                 <li><i class="icon-pencil" style="margin-right:5px;"></i>@Html.ActionLink(collaborator.User.DisplayName, "details", "user", new { id = collaborator.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(collaborator.User.UserName) }, new { })</li>   
+                }
+                else if (collaborator.Role.Name == "Designer")
+                {
+                 <li><i class="icon-picture" style="margin-right:5px;"></i>@Html.ActionLink(collaborator.User.DisplayName, "details", "user", new { id = collaborator.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(collaborator.User.UserName) }, new { })</li>
+                }
+                else
+                {
+                 <li><i class="icon-eye-open" style="margin-right:5px;"></i>@Html.ActionLink(collaborator.User.DisplayName, "details", "user", new { id = collaborator.User.Id, userName = ProjectX.Helpers.HelperService.GenerateSlug(collaborator.User.UserName) }, new { })</li>   
+                }
+                
             }
         </ul>
 
@@ -67,7 +79,18 @@
             <ul class="unstyled" style="margin-left: 10px;">
                 @foreach (var spot in Model.Openings.OrderBy(x => x.Role.Name))
                 {
-                    <li>@spot.Role.Name</li>
+                    if (spot.Role.Name == "Developer")
+                    {
+                      <li><i class="icon-pencil" style="margin-right:5px;"></i>@spot.Role.Name</li>  
+                    }
+                    else if(spot.Role.Name == "Designer")
+                    {
+                      <li><i class="icon-picture" style="margin-right:5px;"></i>@spot.Role.Name</li>  
+                    }
+                    else
+                    {
+                      <li><i class="icon-eye-open" style="margin-right:5px;"></i>@spot.Role.Name</li>    
+                    }
                 }
             </ul>
             @Html.ActionLink("Apply", "ApplyForOpening", "Application", new { id = Model.Id }, new { @class = "btn btn-inverse btn-block" });
