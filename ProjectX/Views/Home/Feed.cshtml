@@ -4,18 +4,21 @@
 }
 <h2>
     Latest updates</h2>
-    <div class="updates">
+<div class="row-fluid">
+    <div class="updates span7 left">
     @foreach (var update in Model)
     {
         <div class="row-fluid">
             <div class="span1">
                 <img src="/Content/images/icons/@(update.Type).png" />
             </div>
-            <div class="span11">
+            <div class="span6">
                 <p><a href="#">@update.Header</a></p>
                 <p>@update.Message</p>
                 <p>@update.Added - @update.Project.Name</p>
             </div>
         </div>
     }
+    </div>
+    <div class="span4 offset1">dawdad</div>
     </div>
