@@ -97,7 +97,7 @@ namespace ProjectX.Controllers
         public JsonResult CheckFollowing(int id)
         {
             var follow = _dataRepository.FilterBy<Follow>(x => x.Project.Id == id && x.User.Id == int.Parse(User.Identity.Name)).FirstOrDefault();
-            return Json(follow == null);
+            return Json(follow != null);
         }
     }
 }

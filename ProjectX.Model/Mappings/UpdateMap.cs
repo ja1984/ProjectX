@@ -13,7 +13,8 @@ namespace ProjectX.Model.Mappings
             Map(x => x.Added);
             Map(x => x.Header);
             Map(x => x.Message);
-
+            Map(x => x.Type);
+            References(x => x.Project);
             References(x => x.Author);
         }
 

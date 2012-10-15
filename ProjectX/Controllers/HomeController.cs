@@ -31,25 +31,21 @@ namespace ProjectX.Controllers
         public ActionResult Index()
         {
 
-            //var userId = int.Parse(User.Identity.Name);
-            //var sender = _dataRepository.Get<User>(userId);
-            //var reciever = _dataRepository.Get<User>(102);
-
-            //var pm = new PrivateMessage
-            //{
-
-            //    Header = "test",
-            //    Message = "Hejsan hoppsan",
-            //    IsRead = false,
-            //    Sent = DateTime.Now,
-            //    Sender = reciever,
-            //    Reciever = sender
-            //};
-
-            //_dataRepository.Save<PrivateMessage>(pm);
-
+            if(!string.IsNullOrEmpty(User.Identity.Name)){
+                return RedirectToAction("Feed");
+            }
 
             return View();
+        }
+
+        public ActionResult Feed()
+        {
+            var userId = int.Parse(User.Identity.Name);
+            var following = _dataRepository.FilterBy<Follow>(x => x.User.Id == userId).ToList();
+            var updates = new List<Update>();
+            updates.AddRange(following.SelectMany(x=>x.Project.Updates));
+
+            return View(updates);
         }
 
     }
